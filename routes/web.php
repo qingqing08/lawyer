@@ -37,7 +37,8 @@ Route::any('/admin/login' , 'Admin\Index@login');
 Route::any('/admin/login-do' , 'Admin\Index@login_do');
 //执行退出操作
 Route::any('/admin/loginout' , 'Admin\Index@loginout');
-
+//加载右侧主体
+Route::any('/admin/welcome' , 'Admin\Index@welcome');
 
 
 /* 管理员管理类 */
