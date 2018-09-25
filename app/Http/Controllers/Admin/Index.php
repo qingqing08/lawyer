@@ -13,7 +13,7 @@ class Index extends Controller
      *  后台登陆页面
      */
     public function login(){
-        return view('Admin.Login.login');
+        return view('admin.login.login');
     }
 
     /**
@@ -59,7 +59,7 @@ class Index extends Controller
 
         if(empty($userinfo)){
 
-            return redirect('admin.login.login');
+            return redirect('admin/login');
         }
 
         return view('admin.index.index' , ['userinfo' => $userinfo]);

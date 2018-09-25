@@ -19,7 +19,7 @@ class Admin extends Controller
 
     /** 管理员列表 */
     public function admin_list(){
-
+        return view('admin.admin.admin_list');
     }
 
     /** 管理员修改 */
