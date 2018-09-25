@@ -1,5 +1,5 @@
 {{--加载头部代码--}}
-@include('layouts.header')
+@extends('layouts.header')
 {{--加载左侧代码--}}
-@include('layouts.left')
+@extends('layouts.left')
 123123
