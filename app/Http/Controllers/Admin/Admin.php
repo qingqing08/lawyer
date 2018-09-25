@@ -9,7 +9,7 @@ class Admin extends Controller
 {
     /** 管理员添加 */
     public function admin_add(){
-
+        return view('admin.admin.admin_add',['title'=>'管理员添加']);
     }
 
     /** 执行添加 */
