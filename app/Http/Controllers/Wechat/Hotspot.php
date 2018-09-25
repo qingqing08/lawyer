@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
 class Hotspot extends Controller{
@@ -33,7 +34,22 @@ class Hotspot extends Controller{
 //            'headimgurl'    =>  'http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ8cObich5lCfPGjZNRibJFhnOrazTad5cfKxQOPKSoq6oicXAVLJbwgl6FSaicibcraONsMC1FOW8zAFg/132',
 //            'privilege' => Array (),
 //        ];
+//        dd($user_arr);
+        $user_info = DB::table('user')->where('wx_openid' , $user_arr['openid'])->first();
+        $data = [
+            'wx_openid' =>  $user_arr['openid'],
+            'wx_name' =>  $user_arr['nickname'],
+            'wx_headeimg'    =>  $user_arr['headimgurl'],
+            'u_ctime'   =>  time(),
 
-        print_r($user_arr);die;
+        ];
+
+        if (empty($user_info)){
+            DB::table('user')->insert($data);
+        }
+
+//        $hot = DB::table('')
+//        return view('');
+        echo "实时热点";
     }
 }
