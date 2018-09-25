@@ -25,7 +25,8 @@ class Medal extends Controller
      * 勋章级别列表
      */
     public function medal_list(){
-
+        
+        return view('admin.medal.medal_list');
     }
 
     /**
