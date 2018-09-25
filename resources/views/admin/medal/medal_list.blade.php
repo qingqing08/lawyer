@@ -11,8 +11,8 @@
 </div>
 <div class="x-body">
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','medal-add')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+        <button class="layui-btn" onclick="x_admin_show('添加勋章','medal-add')"><i class="layui-icon"></i>添加</button>
+        <span class="x-right" style="line-height:40px">共有数据：{{ $count }} 条</span>
     </xblock>
     <table class="layui-table">
         <thead>
@@ -37,29 +37,20 @@
             <td>{{ $medal->m_money }}元</td>
             <td>{{ $medal->m_ctime }}</td>
             <td class="td-manage">
-                <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
-                    <i class="layui-icon">&#xe601;</i>
-                </a>
-                <a title="编辑"  onclick="x_admin_show('编辑','role-add.html')" href="javascript:;">
+                <a title="编辑"  onclick="x_admin_show('编辑','medal-modify?m_id={{ $medal->m_id }}')" href="javascript:;">
                     <i class="layui-icon">&#xe642;</i>
                 </a>
-                <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <a title="删除" onclick="member_del(this,{{ $medal->m_id }})" href="javascript:;">
                     <i class="layui-icon">&#xe640;</i>
                 </a>
             </td>
         </tr>
         @endforeach
+        @csrf
         </tbody>
     </table>
     <div class="page">
-        <div>
-            <a class="prev" href="">&lt;&lt;</a>
-            <a class="num" href="">1</a>
-            <span class="current">2</span>
-            <a class="num" href="">3</a>
-            <a class="num" href="">489</a>
-            <a class="next" href="">&gt;&gt;</a>
-        </div>
+        {{ $medal_list->links() }}
     </div>
 
 </div>
@@ -106,8 +97,25 @@
     function member_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
             //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!',{icon:1,time:1000});
+            var token = $("input[name=_token]").val();
+            $.ajax({
+                url:"medal-delete",
+                type:"post",
+                data:{
+                    m_id:id,
+                    _token:token,
+                },
+                dataType:"json",
+                async:false,
+                cache:false,
+                success:function (res) {
+                    if (res.code == 1) {
+                        $(obj).parents("tr").remove();
+                        layer.msg('已删除!', {icon: 1, time: 1000});
+                    }
+                }
+            });
+
         });
     }
 
