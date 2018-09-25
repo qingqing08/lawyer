@@ -13,7 +13,7 @@ class Index extends Controller
      *  后台登陆页面
      */
     public function login(){
-        return view('admin.login.login');
+        return view('Admin.Login.login');
     }
 
     /**
@@ -45,14 +45,9 @@ class Index extends Controller
 
                 return (['code' => 1 , 'msg' => '登陆成功']);
 
-
             }
 
         }
-
-
-
-        return (['code' => 1 , 'msg' => '登陆成功']);
     }
 
     /**
@@ -61,6 +56,11 @@ class Index extends Controller
     public function index(Request $request){
 
         $userinfo =  session :: get('userinfo');
+
+        if(empty($userinfo)){
+
+            return redirect('admin.login.login');
+        }
 
         return view('admin.index.index' , ['userinfo' => $userinfo]);
     }
@@ -80,6 +80,7 @@ class Index extends Controller
     public function logout(){
 
         session :: put('userinfo' , null);
-        
+
+        return redirect('admin.index.welcome');
     }
 }
