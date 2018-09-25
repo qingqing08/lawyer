@@ -60,7 +60,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin/admin-list">
+                        <a _href="/admin/admin-list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>管理员列表</cite>
 
@@ -114,7 +114,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin/type-list">
+                        <a _href="/admin/type-list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>类型列表</cite>
                         </a>
@@ -129,7 +129,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin/medal-list">
+                        <a _href="/admin/medal-list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>勋章列表</cite>
                         </a>
@@ -144,7 +144,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin/recharge-list">
+                        <a _href="/admin/recharge-list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>充值列表</cite>
                         </a>
@@ -159,7 +159,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin/forward-list">
+                        <a _href="/admin/forward-list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>提现列表</cite>
                         </a>
@@ -174,7 +174,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin/knowledge-list">
+                        <a _href="/admin/knowledge-list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>法律常识列表</cite>
                         </a>
@@ -189,7 +189,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin/lawyer-list">
+                        <a _href="/admin/lawyer-list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户/律师列表</cite>
                         </a>
@@ -204,7 +204,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin/integral-list">
+                        <a _href="/admin/integral-list">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>积分列表</cite>
                         </a>
