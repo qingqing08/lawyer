@@ -7,5 +7,10 @@ use App\Http\Controllers\Controller;
 
 class Forward extends Controller
 {
-    //
+    /**
+     * 提现明细列表
+     */
+    public function forward_list(){
+        
+    }
 }
