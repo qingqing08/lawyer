@@ -31,6 +31,14 @@ Route::any('create' , 'Wechat@create');
 
 //后台首页
 Route::any('/admin/index' , 'Admin\Index@index');
+//后台登陆
+Route::any('/admin/login' , 'Admin\Index@login');
+//执行登陆页面
+Route::any('/admin/login-do' , 'Admin\Index@login_do');
+//执行退出操作
+Route::any('/admin/loginout' , 'Admin\Index@loginout');
+
+
 
 /* 管理员管理类 */
 //管理员列表
