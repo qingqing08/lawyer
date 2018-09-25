@@ -116,3 +116,6 @@ Route::post('/admin/lawyer-delete' , 'Admin\Lawyer@lawyer_delete');
 /*积分管理类 ------ Integral */
 //积分详情列表
 Route::get('/admin/integral-list' , 'Admin\Integral@integral_list');
+
+/* 实时热点 */
+Route::get('/hotspot-list' , 'Wechat\Hotspot@hotspot_list');

@@ -130,7 +130,7 @@ class Wechat extends Controller{
                 [
                     'type'  =>  'view',
                     'name'  =>  '实时热点',
-                    'url'   =>  'http://pengqq.jebt.top/hot',
+                    'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/hotspot-list?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                 ],
                 [
                     "name"=>"法律服务",
@@ -139,19 +139,19 @@ class Wechat extends Controller{
                         [
                             'type'  =>  'view',
                             'name'  =>  '找律师',
-                            'url'   =>  'http://pengqq.jebt.top/find-lawyer',
+                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/find-lawyer?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                         ],
                         [
                             'type'  =>  'view',
                             'name'  =>  '法律常识',
-                            'url'   =>  'http://pengqq.jebt.top/legal-knowledge',
+                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/legal-knowledge?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                         ],
                     ]
                 ],
                 [
                     'type'  =>  'view',
                     'name'  =>  '个人中心',
-                    'url'   =>  'http://pengqq.jebt.top/self',
+                    'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/self?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                 ],
             ],
         ];
