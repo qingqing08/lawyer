@@ -253,19 +253,20 @@ class Wechat extends Controller{
         $code = $_GET['code'];
         $state = $_GET['state'];
 
-        $arr = DB::table('token')->where('type' , 2)->first();
+        $token = DB::table('token')->where('type' , 2)->first();
         $time = time();
         $openid = Session::get('openid');
 
-        $arr = json_decode($arr , true);
-        if (empty($arr)){
+        if (empty($token) || empty($openid)){
             $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx996fa85abda5e676&secret=4fa1f553b231ec2bed06cdc7d3491ae0&code=".$code."&grant_type=authorization_code";
 //
             $data = file_get_contents($url);
 //
-//        echo $data;die;
             $arr = json_decode($data , true);
-            Session::put('openid' , $arr['openid']);
+//            echo $arr['openid'];
+//            print_r($arr);die;
+            $openid = $arr['openid'];
+            Session::put('openid' , $openid);
 
             $data = [
                 'appid' =>  'wx996fa85abda5e676',
@@ -275,14 +276,16 @@ class Wechat extends Controller{
 
             DB::table('token')->where('type' , 2)->update($data);
         } else {
-            if ($arr->ctime - $time > 1800 ){
+            if ($token->ctime - $time > 1800 ){
                 $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx996fa85abda5e676&secret=4fa1f553b231ec2bed06cdc7d3491ae0&code=".$code."&grant_type=authorization_code";
 //
                 $data = file_get_contents($url);
 //
 //        echo $data;die;
                 $arr = json_decode($data , true);
-                Session::put('openid' , $arr['openid']);
+                $openid = $arr['openid'];
+                Session::put('openid' , $openid);
+
                 $data = [
                     'appid' =>  'wx996fa85abda5e676',
                     'access_token'  =>  $arr['access_token'],
@@ -293,28 +296,12 @@ class Wechat extends Controller{
             }
         }
 
-
-        if (empty($openid)){
-            $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx996fa85abda5e676&secret=4fa1f553b231ec2bed06cdc7d3491ae0&code=".$code."&grant_type=authorization_code";
-//
-            $data = file_get_contents($url);
-//
-//        echo $data;die;
-            $arr = json_decode($data , true);
-            Session::put('openid' , $arr['openid']);
-            $data = [
-                'appid' =>  'wx996fa85abda5e676',
-                'access_token'  =>  $arr['access_token'],
-                'ctime' =>  time(),
-            ];
-
-            DB::table('token')->where('type' , 2)->update($data);
-        }
-
-        $user_url = "https://api.weixin.qq.com/sns/userinfo?access_token=".$arr['access_token']."&openid=".$openid."&lang=zh_CN";
+        $token = DB::table('token')->where('type' , 2)->first();
+        $user_url = "https://api.weixin.qq.com/sns/userinfo?access_token=".$token->access_token."&openid=".$openid."&lang=zh_CN";
 
         $user_data = file_get_contents($user_url);
 //
+//        dd($user_data);
         $user_arr = json_decode($user_data , true);
         $user_info = DB::table('user')->where('wx_openid' , $user_arr['openid'])->first();
         $data = [
