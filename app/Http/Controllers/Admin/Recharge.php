@@ -18,17 +18,7 @@ class Recharge extends Controller
     public function recharge_List(){
     	$data = DB::table('recharge')
     	->join('user','recharge.u_id','user.u_id')
-    	->get();
-    		// foreach ($data as $k => $v) {
-    		// 	if($v->m_paytype==1){
-    		// 		$v->m_pay=='微信';
-    		// 	}elseif ($v->m_paytype==2) {
-    		// 		$v->m_pay=='支付宝';
-    		// 	}else{
-    		// 		$v->m_pay=='银行卡';
-    		// 	}
-    		// }
-    	// print_r($data);exit;
+    	->get();                                                                               
     	return view("admin.recharge.recharge_list",['data'=>$data,'title'=>'充值记录']);
     }
 }

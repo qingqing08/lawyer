@@ -34,7 +34,15 @@
             </td>
             <td>{{@$v->wx_name}}</td>
             <td>{{@$v->f_money}}</td>
-            <td>{{@$v->f_type}}</td>
+            @if($v->f_type==1)
+            <td>微信</td>
+            @endif
+            @if($v->f_type==2)
+            <td>支付宝</td>
+            @endif
+            @if($v->f_type==3)
+            <td>银行卡</td>
+            @endif
             <td>{{@$v->f_account}}</td>
             
             <td><?php echo date('Y-m-d H:i:s',$v->f_ctime) ?></td>

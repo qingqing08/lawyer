@@ -29,11 +29,23 @@
           @foreach($data as $v)
           <tr>
             <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'>
+                <i class="layui-icon">&#xe605;</i></div>
             </td>
             <td>{{@$v->wx_name}}</td>
+
             <td>{{@$v->r_money}}</td>
-            <td>{{@$v->m_paytype}}</td>
+            @if($v->m_paytype==1)
+              <td>微信</td>
+            @endif
+
+            @if($v->m_paytype==2)
+              <td>支付宝</td>
+            @endif
+
+            @if($v->m_paytype==3)
+              <td>银行卡</td>
+            @endif     
             
             
             <td><?php echo date('Y-m-d H:i:s',$v->r_ctime) ?></td>
@@ -44,6 +56,7 @@
               <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
+
             </td>
           </tr>
           @endforeach
