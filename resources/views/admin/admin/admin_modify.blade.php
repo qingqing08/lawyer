@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>管理员添加</title>
+    <title>管理员编辑</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -25,20 +25,36 @@
     <form class="layui-form">
         @csrf
         <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <input type="hidden" id="id" name="a_id" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input" value="{{$data->a_id}}">
+            </div>
+        <div class="layui-form-item">
             <label for="username" class="layui-form-label">
                 <span class="x-red">*</span>登录名
             </label>
             <div class="layui-input-inline">
                 <input type="text" id="username" name="a_name" required="" lay-verify="required"
-                       autocomplete="off" class="layui-input">
+                       autocomplete="off" class="layui-input" value="{{$data->a_name}}">
             </div>
             <div class="layui-form-mid layui-word-aux">
                 <span class="x-red">*</span>将会成为您唯一的登入名
             </div>
         </div>
+            <div class="layui-form-item">
+                <label for="username" class="layui-form-label">
+                    <span class="x-red">*</span>旧密码
+                </label>
+                <div class="layui-input-inline">
+                    <input type="password" id="o_pass" name="a_name"  class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>将会成为您唯一的登入名
+                </div>
+            </div>
         <div class="layui-form-item">
             <label for="L_pass" class="layui-form-label">
-                <span class="x-red">*</span>密码
+                <span class="x-red">*</span>新密码
             </label>
             <div class="layui-input-inline">
                 <input type="password" id="L_pass" name="a_password" required="" lay-verify="pass"
@@ -61,7 +77,7 @@
             <label for="L_repass" class="layui-form-label">
             </label>
             <button  class="layui-btn" lay-filter="add" lay-submit="">
-                增加
+                提交
             </button>
         </div>
     </form>
@@ -74,6 +90,7 @@
 
         //自定义验证规则
         form.verify({
+
             nikename: function(value){
                 if(value.length < 5){
                     return '昵称至少得5个字符啊';
@@ -90,11 +107,21 @@
         //监听提交
         form.on('submit(add)', function(data){
             var token = $("input[name=_token]").val();
+            var a_name= $("input[name=a_name]").val();
+            var o_id=$("input[name=o_pass]").val();
+            var a_id=$("input[name=a_id]").val();
+            var a_password=$("input[name=a_password]")
             $.ajax({
-                url:"/admin/admin-add-do",
+                url:"/admin/admin-modifiy-do",
                 type:"post",
                 dataType:"json",
-                data:data.field,
+                data:{
+                    _token  : token,
+                    a_name  : a_name,
+                    o_id    : o_id,
+                    a_id     : a_id,
+                    a_password :a_password
+                },
                 cache:false,
                 async:false,
                 success:function (data){
