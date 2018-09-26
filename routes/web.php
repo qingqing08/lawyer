@@ -131,3 +131,9 @@ Route::get('/self' , 'Wechat\User@self');
 
 /* 法律常识 */
 Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
+
+/* 发布悬赏问题 */
+//问题列表
+Route::get('/question-list' , 'Wechat\Question@question_list');
+//发布问题
+Route::get('/release-question' , 'Wechat\Question@release_question');
