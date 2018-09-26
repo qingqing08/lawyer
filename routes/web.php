@@ -27,9 +27,6 @@ Route::get('send-message' , 'Wechat@send_message');
 Route::get('create-menu' , 'Wechat@create_menu');
 Route::get('create' , 'Wechat@create');
 
-//网页授权登录
-Route::get('weixin-auth' , 'Wechat@weixin_auth');
-
 /* ---------------------------------------------------------------------- */
 
 //后台首页
@@ -57,7 +54,8 @@ Route::get('/admin/admin-modify' , 'Admin\Admin@admin_modify');
 Route::post('/admin/admin-modify-do' , 'Admin\Admin@admin_modify_do');
 //执行删除管理员操作
 Route::post('/admin/admin-delete' , 'Admin\Admin@admin_delete');
-
+//管理员启停
+Route::post('/admin/admin-startstop' , 'Admin\Admin@admin_startstop');
 
 /* 类型管理类 ------ Type */
 //类型列表
@@ -119,15 +117,3 @@ Route::post('/admin/lawyer-delete' , 'Admin\Lawyer@lawyer_delete');
 /*积分管理类 ------ Integral */
 //积分详情列表
 Route::get('/admin/integral-list' , 'Admin\Integral@integral_list');
-
-/* 实时热点 */
-Route::get('/hotspot-list' , 'Wechat\Hotspot@hotspot_list');
-
-/* 找律师 */
-Route::get('/find-lawyer' , 'Wechat\Lawyer@find_lawyer');
-
-/* 个人中心 */
-Route::get('/self' , 'Wechat\User@self');
-
-/* 法律常识 */
-Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');

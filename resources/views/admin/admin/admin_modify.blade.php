@@ -26,8 +26,7 @@
         @csrf
         <div class="layui-form-item">
             <div class="layui-input-inline">
-                <input type="hidden" id="id" name="a_id" required="" lay-verify="required"
-                       autocomplete="off" class="layui-input" value="{{$data->a_id}}">
+                <input type="hidden" id="id" name="a_id" value="{{$data->a_id}}">
             </div>
         <div class="layui-form-item">
             <label for="username" class="layui-form-label">
@@ -46,7 +45,7 @@
                     <span class="x-red">*</span>旧密码
                 </label>
                 <div class="layui-input-inline">
-                    <input type="password" id="o_pass" name="a_name"  class="layui-input">
+                    <input type="password" id="o_pass" name="o_pass"  class="layui-input">
                 </div>
                 <div class="layui-form-mid layui-word-aux">
                     <span class="x-red">*</span>将会成为您唯一的登入名
@@ -76,7 +75,7 @@
         <div class="layui-form-item">
             <label for="L_repass" class="layui-form-label">
             </label>
-            <button  class="layui-btn" lay-filter="add" lay-submit="">
+            <button  id="tj" class="layui-btn" lay-filter="add" lay-submit="">
                 提交
             </button>
         </div>
@@ -105,14 +104,14 @@
         });
 
         //监听提交
-        form.on('submit(add)', function(data){
+        $('#tj').click(function(data){
             var token = $("input[name=_token]").val();
             var a_name= $("input[name=a_name]").val();
             var o_id=$("input[name=o_pass]").val();
             var a_id=$("input[name=a_id]").val();
-            var a_password=$("input[name=a_password]")
+            var a_password=$("input[name=a_password]").val();
             $.ajax({
-                url:"/admin/admin-modifiy-do",
+                url:"/admin/admin-modify-do",
                 type:"post",
                 dataType:"json",
                 data:{
