@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Wechat extends Controller{
     //
@@ -130,7 +131,8 @@ class Wechat extends Controller{
                 [
                     'type'  =>  'view',
                     'name'  =>  '实时热点',
-                    'url'   =>  'http://pengqq.jebt.top/hot',
+                    'url'   =>  'http://pengqq.jebt.top/hotspot-list',
+//                    'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/hotspot-list?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                 ],
                 [
                     "name"=>"法律服务",
@@ -140,11 +142,13 @@ class Wechat extends Controller{
                             'type'  =>  'view',
                             'name'  =>  '找律师',
                             'url'   =>  'http://pengqq.jebt.top/find-lawyer',
+//                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/find-lawyer?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                         ],
                         [
                             'type'  =>  'view',
                             'name'  =>  '法律常识',
-                            'url'   =>  'http://pengqq.jebt.top/legal-knowledge',
+                            'url'   =>  'http://pengqq.jebt.top/knowledge-list',
+//                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/legal-knowledge?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                         ],
                     ]
                 ],
@@ -152,6 +156,7 @@ class Wechat extends Controller{
                     'type'  =>  'view',
                     'name'  =>  '个人中心',
                     'url'   =>  'http://pengqq.jebt.top/self',
+//                    'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/self?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                 ],
             ],
         ];
@@ -242,4 +247,88 @@ class Wechat extends Controller{
 //        echo $json;die;
         return $this->curlPost($url, $json);
     }
+
+
+    public function weixin_auth(){
+        $code = $_GET['code'];
+        $state = $_GET['state'];
+
+        $arr = DB::table('token')->where('type' , 2)->first();
+        $time = time();
+        $openid = Session::get('openid');
+
+        $arr = json_decode($arr , true);
+        if (empty($arr)){
+            $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx996fa85abda5e676&secret=4fa1f553b231ec2bed06cdc7d3491ae0&code=".$code."&grant_type=authorization_code";
+//
+            $data = file_get_contents($url);
+//
+//        echo $data;die;
+            $arr = json_decode($data , true);
+            Session::put('openid' , $arr['openid']);
+
+            $data = [
+                'appid' =>  'wx996fa85abda5e676',
+                'access_token'  =>  $arr['access_token'],
+                'ctime' =>  time(),
+            ];
+
+            DB::table('token')->where('type' , 2)->update($data);
+        } else {
+            if ($arr->ctime - $time > 1800 ){
+                $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx996fa85abda5e676&secret=4fa1f553b231ec2bed06cdc7d3491ae0&code=".$code."&grant_type=authorization_code";
+//
+                $data = file_get_contents($url);
+//
+//        echo $data;die;
+                $arr = json_decode($data , true);
+                Session::put('openid' , $arr['openid']);
+                $data = [
+                    'appid' =>  'wx996fa85abda5e676',
+                    'access_token'  =>  $arr['access_token'],
+                    'ctime' =>  time(),
+                ];
+
+                DB::table('token')->where('type' , 2)->update($data);
+            }
+        }
+
+
+        if (empty($openid)){
+            $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx996fa85abda5e676&secret=4fa1f553b231ec2bed06cdc7d3491ae0&code=".$code."&grant_type=authorization_code";
+//
+            $data = file_get_contents($url);
+//
+//        echo $data;die;
+            $arr = json_decode($data , true);
+            Session::put('openid' , $arr['openid']);
+            $data = [
+                'appid' =>  'wx996fa85abda5e676',
+                'access_token'  =>  $arr['access_token'],
+                'ctime' =>  time(),
+            ];
+
+            DB::table('token')->where('type' , 2)->update($data);
+        }
+
+        $user_url = "https://api.weixin.qq.com/sns/userinfo?access_token=".$arr['access_token']."&openid=".$openid."&lang=zh_CN";
+
+        $user_data = file_get_contents($user_url);
+//
+        $user_arr = json_decode($user_data , true);
+        $user_info = DB::table('user')->where('wx_openid' , $user_arr['openid'])->first();
+        $data = [
+            'wx_openid' =>  $user_arr['openid'],
+            'wx_name' =>  $user_arr['nickname'],
+            'wx_headeimg'    =>  $user_arr['headimgurl'],
+            'u_ctime'   =>  time(),
+
+        ];
+
+        if (empty($user_info)){
+            DB::table('user')->insert($data);
+            header("location:".$state);
+        }
+    }
+
 }
