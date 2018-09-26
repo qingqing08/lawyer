@@ -51,8 +51,20 @@ class Admin extends Controller
     /** 执行修改 */
     public function admin_modify_do(){
         $post=Input::post();
-        dd($post);
-        $data=DB::table('admin_user')->where(['a_id'=>$a_id])->get();
+        $update['a_name']=$post['a_name'];
+        $update['a_password']=md5($post['a_password']);
+        $data=DB::table('admin_user')->where(['a_id'=>$post['a_id']])->first();
+//        dd($post);
+        if($data->a_password!=md5($post['o_id'])){
+            return ['msg'=>'原密码输入错误','code'=>2];
+        }else{
+            $res=DB::table('admin_user')->where(['a_id'=>$post['a_id']])->update($update);
+            if($res){
+                return ['msg'=>'修改成功','code'=>1];
+            }else{
+                return ['msg'=>'修改失败','code'=>2];
+            }
+        }
     }
 
     /** 管理员删除 */

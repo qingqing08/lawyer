@@ -7,7 +7,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/admin/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/admin/layui/css/font.css">
     <link rel="stylesheet" href="/admin/layui/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -71,11 +71,11 @@
                 @if($v->a_status==1)
                 <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>
                 @else
-                    <span class="layui-btn layui-btn-normal layui-btn-mini">未启用</span>
+                    <span class="layui-btn layui-btn-normal layui-btn-mini layui-btn-disabled">已停用</span>
                 @endif
             </td>
             <td class="td-manage">
-                <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <a onclick="member_stop(this,'{{$v->a_id}}')" href="javascript:;"  title="启用">
                     <i class="layui-icon">&#xe601;</i>
                 </a>
                 <a title="编辑"  onclick="x_admin_show('编辑','/admin/admin-modify?a_id={{$v->a_id}}')" href="javascript:;">
@@ -121,7 +121,21 @@
         layer.confirm('确认要停用吗？',function(index){
 
             if($(obj).attr('title')=='启用'){
+                $.ajax({
+                    url:"/admin/admin-startstop",
+                    type:"post",
+                    data:{a_id:id,_token:token},
+                    cache:false,
+                    async:false,
+                    success:function (data){
+                        if (data.code == 1) {
+                            layer.msg(data.msg,{icon:data.code});
+                        } else {
+                            layer.msg(data.msg, {icon: data.code});
+                        }
 
+                    }
+                })
                 //发异步把用户状态进行更改
                 $(obj).attr('title','停用')
                 $(obj).find('i').html('&#xe62f;');

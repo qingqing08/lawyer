@@ -27,9 +27,6 @@ Route::get('send-message' , 'Wechat@send_message');
 Route::get('create-menu' , 'Wechat@create_menu');
 Route::get('create' , 'Wechat@create');
 
-//网页授权登录
-Route::get('weixin-auth' , 'Wechat@weixin_auth');
-
 /* ---------------------------------------------------------------------- */
 
 //后台首页
@@ -57,7 +54,8 @@ Route::get('/admin/admin-modify' , 'Admin\Admin@admin_modify');
 Route::post('/admin/admin-modify-do' , 'Admin\Admin@admin_modify_do');
 //执行删除管理员操作
 Route::post('/admin/admin-delete' , 'Admin\Admin@admin_delete');
-
+//管理员启停
+Route::post('/admin/admin-startstop' , 'Admin\Admin@admin_startstop');
 
 /* 类型管理类 ------ Type */
 //类型列表
