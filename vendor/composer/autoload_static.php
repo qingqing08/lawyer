@@ -17,6 +17,7 @@ class ComposerStaticInit2dd74d8d9287acd3bffdad17a1f67183
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        'eb90278997e8dfe5eade2ed6b629a4f8' => __DIR__ . '/../..' . '/app/Helper/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -322,11 +323,22 @@ class ComposerStaticInit2dd74d8d9287acd3bffdad17a1f67183
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\Admin\\Admin' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Admin.php',
+        'App\\Http\\Controllers\\Admin\\Forward' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Forward.php',
+        'App\\Http\\Controllers\\Admin\\Index' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Index.php',
+        'App\\Http\\Controllers\\Admin\\Integral' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Integral.php',
+        'App\\Http\\Controllers\\Admin\\Knowledge' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Knowledge.php',
+        'App\\Http\\Controllers\\Admin\\Lawyer' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Lawyer.php',
+        'App\\Http\\Controllers\\Admin\\Medal' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Medal.php',
+        'App\\Http\\Controllers\\Admin\\Recharge' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Recharge.php',
+        'App\\Http\\Controllers\\Admin\\Type' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Type.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Wechat' => __DIR__ . '/../..' . '/app/Http/Controllers/Wechat.php',
+        'App\\Http\\Controllers\\Wechat\\Hotspot' => __DIR__ . '/../..' . '/app/Http/Controllers/Wechat/Hotspot.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
