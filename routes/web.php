@@ -117,21 +117,3 @@ Route::post('/admin/lawyer-delete' , 'Admin\Lawyer@lawyer_delete');
 /*积分管理类 ------ Integral */
 //积分详情列表
 Route::get('/admin/integral-list' , 'Admin\Integral@integral_list');
-
-/* 实时热点 */
-Route::get('/hotspot-list' , 'Wechat\Hotspot@hotspot_list');
-
-/* 找律师 */
-Route::get('/find-lawyer' , 'Wechat\Lawyer@find_lawyer');
-
-/* 个人中心 */
-Route::get('/self' , 'Wechat\User@self');
-
-/* 法律常识 */
-Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
-
-/* 发布悬赏问题 */
-//问题列表
-Route::get('/question-list' , 'Wechat\Question@question_list');
-//发布问题
-Route::get('/release-question' , 'Wechat\Question@release_question');

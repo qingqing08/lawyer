@@ -77,4 +77,10 @@ class Admin extends Controller
             return ['msg'=>'删除失败','code'=>2];
         }
     }
+    /** 管理员启停 */
+    public function admin_startstop(){
+        $post=Input::post();
+        $res=DB::table('admin_user')->where(['a_id'=>$post['a_id']])->update(['a_status'=>$post['status']]);
+dd($res);
+    }
 }
