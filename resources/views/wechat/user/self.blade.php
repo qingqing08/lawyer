@@ -29,7 +29,7 @@
                     <?php echo '律师'?>
                     @endif
             </span></p>
-        <input type="button" value="充值">  <input type="button" value="提现">  余额：<span>{{$user_info -> balance}}</span>
+        <input type="button" value="充值" id="Recharge">  <input type="button" value="提现">  余额：<span>{{$user_info -> balance}}</span>
     </div>
 
 
@@ -37,6 +37,11 @@
 </body>
 </html>
 <script type="text/javascript">
+
+    //充值
+    $('#Recharge').on('click' , function(){
+        alert(123)
+    })
 
     $(function(){
         $(window).bind("scroll",function(){

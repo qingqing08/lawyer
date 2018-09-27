@@ -134,6 +134,9 @@ Route::get('/self' , 'Wechat\User@self');
 Route::post('/register-do' , 'Wechat\User@register_do');
 Route::get('/selfShow' , 'Wechat\User@selfShow');
 
+/* 充值 */
+Route::get('/code' , 'Wechat\User@code');
+
 /* 法律常识 */
 Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
 //常识列表
