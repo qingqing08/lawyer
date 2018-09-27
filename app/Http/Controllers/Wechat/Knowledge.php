@@ -38,10 +38,25 @@ class Knowledge extends Controller{
 
     public function type(){
         $t_id=Input::get('t_id');
-        dd($t_id);
+        $data=DB::table('knowledge')
+            ->where(['t_id'=>$t_id])
+            ->join('type','knowledge.t_id','=','type.t_id')
+            ->get();
+        $type=DB::table('type')->select()->get();
+        foreach($data as $v){
+            $v->k_ctime=date('Y-m-d H:i:s',$v->k_ctime);
+        }
+        return view('wechat.knowledge.type',['data'=>$data,'type'=>$type]);
     }
     public function knowledge_view(){
         $k_id=Input::get('k_id');
-        dd($k_id);
+        $data=DB::table('knowledge')
+            ->where(['k_id'=>$k_id])
+            ->join('type','knowledge.t_id','=','type.t_id')
+            ->get();
+        foreach($data as $v){
+            $v->k_ctime=date('Y-m-d H:i:s',$v->k_ctime);
+        }
+        return view('wechat.knowledge.view',['data'=>$data]);
     }
 }
