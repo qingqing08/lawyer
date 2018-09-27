@@ -134,6 +134,8 @@ Route::post('/register-do' , 'Wechat\User@register_do');
 Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
 //常识列表
 Route::get('/type' , 'Wechat\Knowledge@type');
+//常识详情
+Route::get('/knowledge-view' , 'Wechat\Knowledge@knowledge_view');
 
 /* 发布悬赏问题 */
 //问题列表

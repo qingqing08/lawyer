@@ -93,7 +93,7 @@ class Question extends Controller{
             'nonce_str'=>md5(time()),
             'body'=> '发布悬赏问题',
             'out_trade_no'=> $pid,
-            'total_fee'=> $money,
+            'total_fee'=> $money*100,
             'spbill_create_ip'=>$_SERVER['SERVER_ADDR'],
             'notify_url'=> $base::NOTIFY,
             'trade_type'=>'NATIVE',
