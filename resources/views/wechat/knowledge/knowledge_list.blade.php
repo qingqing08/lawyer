@@ -34,7 +34,7 @@
     </ul>
 </div>
 <div class="search_bar fl_form">
-    <form method="post" action="http://m.findlaw.cn/?m=fagui&a=search">
+    <form>
         @csrf
         <input class="txt_ipt mr10" type="text" name="kw"/><input class="btn" value="搜法规" type="submit" />
         <input type="hidden" name="__hash__" value="3225784402dc7b54cd060f8599a0c569" /></form>
