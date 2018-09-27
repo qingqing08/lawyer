@@ -23,7 +23,10 @@
     <dl class="tag_box c666 bgcfff dash_bb clearfix">
         <dt>法律体系：<a class="fl_link f14" href="../area@ar=a_7C170200">按地区分类&gt;&gt;</a></dt>
         <dd><a href="../fagui" class="cur">全部</a></dd>
-        <dd><a class="" href="../fagui/s10">宪法类</a></dd><dd><a class="" href="../fagui/s20">民商法</a></dd><dd><a class="" href="../fagui/s30">刑法类</a></dd>        <dd><a href="../fagui/types">更多</a></dd>
+        @foreach($type as $v)
+        <dd><a class="" href="../fagui/s10">{{$v->t_name}}</a></dd>
+        @endforeach
+        <dd><a href="../fagui/types">更多</a></dd>
     </dl>
     <ul class="fl_list">
         <li><a href="../fagui/article_5F25895.html">中华人民共和国婚姻法(2001)</a></li>

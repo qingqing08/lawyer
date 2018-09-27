@@ -26,10 +26,8 @@ class Knowledge extends Controller{
                     $data=DB::table('knowledge')
                         ->join('type','knowledge.t_id','=','type.t_id')
                         ->get();
-                    $arr=DB::table('type')->select()->get();
-                    print_r($arr);
-                    dd($data);
-                    return view('wechat.knowledge.knowledge_list');
+                    $type=DB::table('type')->select()->get();
+                    return view('wechat.knowledge.knowledge_list',['data'=>$data,'type'=>$type]);
                 }
             }
         }
