@@ -58,11 +58,12 @@ class Question extends Controller{
             'validity_time' =>  7,
         ];
 
-        $result = DB::table('question')->insert($data);
+        $result = DB::table('question')->insertGetId($data);
         if ($result){
             $order_id = date("YmdHis").rand('100000' , 999999);
             $order_data = [
                 'u_id'  =>  $user_info->u_id,
+                'data_id'   =>  $result,
                 'order_num' =>  $order_id,
                 'o_content' =>  '发布悬赏问题',
                 'o_price'   =>  $money,
@@ -73,25 +74,26 @@ class Question extends Controller{
             $res = DB::table('order')->insert($order_data);
             if ($res){
                 $qrcode = new QRcode();
-                $qrurl = $this->getQrUrl($order_id);
+                $qrurl = $this->getQrUrl($order_id,$money);
 
                 //2.生成二维码
-                QRcode::png($qrurl);
+                $qrcode::png($qrurl,"./paycode.png",'H',10,1,false);
+                echo "<img src='http://pengqq.jebt.top/paycode.png'>";
             }
         }
 
     }
 
-    public function getQrUrl($pid){
+    public function getQrUrl($pid,$money){
         $base = new Base();
         //调用统一下单API
         $params = [
             'appid'=> $base::APPID,
             'mch_id'=> $base::MCHID,
             'nonce_str'=>md5(time()),
-            'body'=> '扫码支付模式二',
+            'body'=> '发布悬赏问题',
             'out_trade_no'=> $pid,
-            'total_fee'=> 2,
+            'total_fee'=> $money,
             'spbill_create_ip'=>$_SERVER['SERVER_ADDR'],
             'notify_url'=> $base::NOTIFY,
             'trade_type'=>'NATIVE',

@@ -41,25 +41,7 @@
         //var openid = "oSt2Q0Z4_n1vxX4QgKm-_HHAAcn0";
 
         var openid = "{{ $openid }}";
-        var zz = /^\d+(\.\d{1,2})?$/;
-        if (zz.test(money) && money != 0) {
-            //alert(openid);
-            $.ajax({
-                url:"pay-do",
-                type:'get',
-                dataType:'json',
-                data:{openid:openid,money:money,q_content:q_content},
-                success:function(data){
-                    //alert(data);
-                    if(data.status == 1){
-                        weixinpay(data);
-                    }else{
-                        alert('请求失败!')
-                    }
-                }
-            });
-        } else {
-            alert('请输入正确金额')
-        }
+
+        window.location.href="http://pengqq.jebt.top/pay-do?money="+money+"&q_content="+q_content+"&openid="+openid;
     }
 </script>
