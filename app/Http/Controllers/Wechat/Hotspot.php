@@ -43,19 +43,23 @@ class Hotspot extends Controller{
         ->join('user','con_hotspot.u_id','user.u_id')
         ->where('h_id',$id)
         ->get();
-        
         return view('wechat.hotspot.hotspot_view',['datainfo'=>$datainfo,'condata'=>$condata]);
     }
     //评论
     public function hotspot_comment(){
+        //微信openid
         $openid = Session::get('openid');
+        //评论内容
+        $content = input::post('content');
+        //热点id
+        $h_id = input::post('h_id');
+
         $data = DB::table('user')
         ->where('wx_openid',$openid)
         ->first();
         $u_id=$data->u_id;
-        $content = input::post('content');
-        $h_id = input::post('h_id');
-        $res=DB::table('con_hotspot')-insert([
+        
+        $res=DB::table('con_hotspot')->insert([
             'h_id'=>$h_id,
             'u_id'=>$u_id,
             'content'=>$content,
