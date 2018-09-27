@@ -19,6 +19,7 @@
     <script type="text/javascript" src="./js/xadmin.js"></script>
 </head>
 <form class="layui-form" action="/register-do" method="post">
+    @csrf
     <div class="layui-form-item">
         <label class="layui-form-label">请选择</label>
         <div class="layui-input-block">
