@@ -14,8 +14,7 @@
         <ul class="fl_list">
             <li>
                 <span>{{@$datainfo->h_title}}</span>
-            </li>   
-            @endforeach    
+            </li>     
         </ul>
     </div>
 </div>
