@@ -19,6 +19,7 @@
     <div style="margin-top: 50px; text-align: center">
         <img src="" alt="" width="300px;" height="300px;">
     </div>
+    <input type="text" value="{{$order_id}}}">
 </body>
 </html>
 

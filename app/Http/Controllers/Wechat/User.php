@@ -79,6 +79,8 @@ class User extends Controller{
 
         $money = $request -> get('money');
 
+        $price = $money * 100;
+
         $openid = session::get('openid');
 
         $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
@@ -111,7 +113,7 @@ class User extends Controller{
             'nonce_str'=>md5(time()),
             'body'=> '扫码支付',
             'out_trade_no'=> $pid,
-            'total_fee'=> $money,
+            'total_fee'=> $price,
             'spbill_create_ip'=>$_SERVER['SERVER_ADDR'],
             'notify_url'=> $base::NOTIFY,
             'trade_type'=>'NATIVE',
