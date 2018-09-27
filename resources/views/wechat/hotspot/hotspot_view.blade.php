@@ -45,6 +45,7 @@
 <script type="text/javascript">
 
     $("#pin").on('click',function(){
+        echo "dodo";return false;
         var content = $("#content").val();
         // alert(content);return false;
         var h_id = $('input[name=h_id]').val();
