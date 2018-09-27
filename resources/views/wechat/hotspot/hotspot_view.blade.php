@@ -29,7 +29,7 @@
         <br>
         <input type="hidden" name="h_id" value="{{@$datainfo->h_id}}">
         <textarea id="content" style="width: 260px; height: 70px;"></textarea>
-        &nbsp;&nbsp;<a id="pin">评论</a>
+        &nbsp;&nbsp;<a id="pin" >评论</a> 
     </div>
 
     <ul>
@@ -69,7 +69,7 @@
                 }
         });
     });
-
+/*
     $("#ret").on('click',function(){
         var 
         var con_id = $('input[name=con_id]').val();
@@ -96,6 +96,7 @@
 
 
     });
+    */
 
 $(function(){
     $(window).bind("scroll",function(){
