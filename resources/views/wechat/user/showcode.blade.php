@@ -10,7 +10,7 @@
 </head>
 <body>
     <div style="margin-top: 20px; text-align: center">
-        <p>请输入金额: <input type="text"id="money"></p>
+        <p>请输入金额: <input type="number"id="money"></p>
         <input type="button" value="充值" id="Recharge">
     </div>
     <div style="margin-top: 40px; text-align: center">
