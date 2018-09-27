@@ -20,26 +20,7 @@
         </ul>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-        <div class="footer_version">
-            <a href="../3g.findlaw.cn/default.htm">普通版</a>
-            <a href="default.htm">触屏版</a>
-            <a href="../china.findlaw.cn/default.htm">电脑版</a>
-        </div>
-        <div class="footer_nav">
-            <a href="default.htm">首页</a>
-            <a href="ask/ask.php">发咨询</a>
-            <a href="lawyer">找律师</a>
-            <a href="fagui">查法规</a>
-        </div>
-        <p class="copyright">Copyright@2003-2014　版权所有 找法网（Findlaw.cn）- 中国最大的法律服务平台</p>
-    </footer>
 </body>
 </html>
 <script type="text/javascript">
