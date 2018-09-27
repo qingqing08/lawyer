@@ -32,18 +32,7 @@
             <li><a href="/knowledge-view?k_id={{$v->k_id}}">{{$v->k_title}}({{$v->t_name}})({{$v->k_ctime}})</a></li>
         @endforeach
     </ul>
-    <div class="page_control item_bt c666"><p class="mb10"><a class="next_p page_btn mr10" href="../fagui/page2">下一页</a><span>(1/22502)</span></p><p><form id="pagesForm" action="http://m.findlaw.cn/fagui/" method="get">跳到第<input class="txt_ipt" type="number" max="22502" min="1" name="page">页<input class="page_btn ml10" type="submit" value="跳转"><input type="hidden" name="__hash__" value="3225784402dc7b54cd060f8599a0c569" /></form></p>            <script type="text/javascript">
-            $('#pagesForm').submit(function(){
-                var page = $(this).children('input[name=page]').val();
-                if (page <= 0) {
-                    alert('请填写一个大于 0 的页码！');
-                    return false;
-                } else if (page > 22502) {
-                    alert('跳转页码不能超过最大页码 22502！');
-                    return false;
-                }
-            });
-        </script></div></div>
+</div>
 <div class="search_bar fl_form">
     <form method="post" action="http://m.findlaw.cn/?m=fagui&a=search">
         <input class="txt_ipt mr10" type="text" name="kw"/><input class="btn" value="搜法规" type="submit" />

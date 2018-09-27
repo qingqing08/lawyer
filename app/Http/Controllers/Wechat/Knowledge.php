@@ -51,12 +51,10 @@ class Knowledge extends Controller{
     public function knowledge_view(){
         $k_id=Input::get('k_id');
         $data=DB::table('knowledge')
-            ->where(['type.k_id'=>$k_id])
+            ->where(['knowledge.k_id'=>$k_id])
             ->join('type','knowledge.t_id','=','type.t_id')
-            ->get();
-        foreach($data as $v){
-            $v->k_ctime=date('Y-m-d H:i:s',$v->k_ctime);
-        }
+            ->first();
+            $data->k_ctime=date('Y-m-d H:i:s',$data->k_ctime);
         return view('wechat.knowledge.view',['data'=>$data]);
     }
 }
