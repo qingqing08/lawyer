@@ -127,9 +127,12 @@ Route::get('/find-lawyer' , 'Wechat\Lawyer@find_lawyer');
 
 /* 个人中心 */
 Route::get('/self' , 'Wechat\User@self');
+Route::post('/register-do' , 'Wechat\User@register_do');
 
 /* 法律常识 */
 Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
+//常识列表
+Route::get('/type' , 'Wechat\Knowledge@type');
 
 /* 发布悬赏问题 */
 //问题列表

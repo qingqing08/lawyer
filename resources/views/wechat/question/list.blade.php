@@ -8,11 +8,11 @@
 </style>
 <link rel="stylesheet" href="/lib/layui/css/layui.css">
 @foreach($question_list as $question)
-<div style="height: 150px;width: 100%;">
+<div style="height: 150px;width: 900px;">
     <div style="float: left; width: 150px;padding-left: 20px;" >
         <img src="{{ $question->wx_headimg }}" alt="" width="150">
     </div>
-    <div style="width: 100%; padding-left: 200px;">
+    <div style="width: 900px; padding-left: 200px;">
         <div style="height: 50px;margin-top: 20px;">
             <span>{{ $question->u_id }}</span>
             <span style="float: right;margin-right: 250px;color: #3399ff;">{{ $question->q_type }}</span>
