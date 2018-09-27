@@ -8,18 +8,21 @@
     
 </head>
 <body>
-<div class="new_ask">
+<div class="new_ask" style="margin-left: 10px;">
     <h2 class="hd"><a href="ask">最新实时热点</a></h2>
     <div class="bd f17">
         <ul class="fl_list">
-        	@foreach($data as $v)
             <li>
-                <a href="/wechat/hotspot-view?h_id={{$v->h_id}}">{{@$v->h_title}}<span> 时间:<?php echo date('m-d H:i:s',$v->h_ctime); ?></span></a>
+                <span>{{@$datainfo->h_title}}</span>
             </li>   
             @endforeach    
         </ul>
     </div>
 </div>
+        
+    <div class="new_ask" >
+            <p>{{@$datainfo->h_content}}</p>              
+    </div>
 
         <div class="footer_version">
             <a href="../3g.findlaw.cn/default.htm">普通版</a>

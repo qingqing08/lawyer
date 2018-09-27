@@ -33,5 +33,14 @@ class Hotspot extends Controller{
         }
     }
 
+    public function hotspot_view(){
+        $id = input::get('h_id');
+        $datainfo=DB::table('hotspot')
+        ->where('h_id',$id)
+        ->first();
+
+        return view('wechat.hotspot.hotspot_view',['datainfo'=>$datainfo]);
+    }
+
 
 }
