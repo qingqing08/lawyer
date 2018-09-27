@@ -124,8 +124,8 @@ Route::get('/admin/integral-list' , 'Admin\Integral@integral_list');
 
 /* 实时热点 */
 Route::get('/hotspot-list' , 'Wechat\Hotspot@hotspot_list');
-Route::get('/hotspot-view' , 'Wechat\Hotspot@hotspot_view');
-Route::get('/hotspot-comment' , 'Wechat\Hotspot@hotspot_comment');
+Route::any('/hotspot-view' , 'Wechat\Hotspot@hotspot_view');
+Route::any('/hotspot-comment' , 'Wechat\Hotspot@hotspot_comment');
 /* 找律师 */
 Route::get('/find-lawyer' , 'Wechat\Lawyer@find_lawyer');
 
