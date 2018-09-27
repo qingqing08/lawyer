@@ -23,7 +23,8 @@ class User extends Controller{
                 if ($user_info->u_type == 0){
                     return view('wechat.user.register' , ['wx_openid'=>$openid]);
                 } else {
-                    return view('wechat.user.self');
+                    $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
+                    return view('wechat.user.self' ,['user_info' => $user_info]);
                 }
             }
         }
