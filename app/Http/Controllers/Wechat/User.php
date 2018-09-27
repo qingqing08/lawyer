@@ -86,14 +86,14 @@ class User extends Controller{
         $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
 
         $arr = [
-            'uid' => $user_info -> u_id,
+            'u_id' => $user_info -> u_id,
             'r_money' => $money,
             'm_paytype' => 1,
             'r_status' => 0,
             'r_ctime' =>time()
         ];
 
-        dd($arr);
+//        dd($arr);
         $id = DB::table('recharge') -> insertGetId($arr);
 
         $data = [
