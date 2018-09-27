@@ -39,7 +39,7 @@ class Knowledge extends Controller{
     public function type(){
         $t_id=Input::get('t_id');
         $data=DB::table('knowledge')
-            ->where(['t_id'=>$t_id])
+            ->where(['law_type.t_id'=>$t_id])
             ->join('type','knowledge.t_id','=','type.t_id')
             ->get();
         $type=DB::table('type')->select()->get();
