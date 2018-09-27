@@ -31,16 +31,9 @@ class Question extends Controller{
     }
 
     public function release_question(){
-        $appid = "wx996fa85abda5e676";
-        $appSecret = "4fa1f553b231ec2bed06cdc7d3491ae0";
-        $jssdk = new JSSDK($appid, $appSecret);
-//        dd($jssdk);
-        //返回签名基本信息
-        $signPackage = $jssdk->getSignPackage();
-//        dd($signPackage);
         $openid = Session::get('openid');
 //        echo $openid;
-        return view('wechat.question.release' , ['openid'=>$openid , 'signPackage'=>$signPackage , 'webhost'=>"http://".$_SERVER['HTTP_HOST']]);
+        return view('wechat.question.release' , ['openid'=>$openid]);
     }
 
     public function pay_do(){

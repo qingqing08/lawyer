@@ -18,11 +18,23 @@
         </ul>
     </div>
 </div>
-        
+    
     <div class="new_ask" >
+        <span> <?php echo date('m-d H:i:s',$datainfo->h_ctime);?> </span>
+        <br>
             <p>{{@$datainfo->h_content}}</p>              
     </div>
-
+    <div>
+        <a id="pin">评论</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
         <div class="footer_version">
             <a href="../3g.findlaw.cn/default.htm">普通版</a>
             <a href="default.htm">触屏版</a>
@@ -38,7 +50,12 @@
     </footer>
 </body>
 </html>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+    $("#pin").on('click',function(){
+        alert('nihao');
+    });
 
 $(function(){
     $(window).bind("scroll",function(){
