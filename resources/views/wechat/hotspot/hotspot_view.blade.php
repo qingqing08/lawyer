@@ -69,9 +69,8 @@
                 }
         });
     });
-/*
-    $("#ret").on('click',function(){
-        var 
+
+    $("#ret").on('click',function(){ 
         var con_id = $('input[name=con_id]').val();
         alert(con_id);return false;
 
@@ -94,9 +93,7 @@
                 }
         });
 
-
     });
-    */
 
 $(function(){
     $(window).bind("scroll",function(){
