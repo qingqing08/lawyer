@@ -66,8 +66,8 @@ class User extends Controller{
      * 展示充值二维码
      */
     public function code(){
-        $pid = time();
-        return view('wechat.user.showcode' , ['pid' => $pid]);
+        $order_id = date("YmdHis").rand('100000' , 999999);
+        return view('wechat.user.showcode' , ['order_id' => $order_id]);
     }
 
     /**
@@ -75,7 +75,9 @@ class User extends Controller{
      */
     public function generateCode(Request $request){
 
-        $pid = $request -> get('pid');
+        $pid = $request -> get('order_id');
+
+        $money = $request -> get('money');
 
         $base = new Base();
 
@@ -85,7 +87,7 @@ class User extends Controller{
             'nonce_str'=>md5(time()),
             'body'=> '扫码支付',
             'out_trade_no'=> $pid,
-            'total_fee'=> 2,
+            'total_fee'=> $money,
             'spbill_create_ip'=>$_SERVER['SERVER_ADDR'],
             'notify_url'=> $base::NOTIFY,
             'trade_type'=>'NATIVE',
