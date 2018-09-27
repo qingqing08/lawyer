@@ -4,8 +4,8 @@
     <meta charset="gbk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>仿找法网触屏手机wap法律网站模板法规-【shenghuofuwu/chaxun/】</title>
-    <meta name="keywords" content="查法规，法律法规" /><meta name="description" content="找法网手机版为您提供宪法、民商法、婚姻法等最全面法律法规查询，同时提供律师为您解决法律难题" />	<link type="text/css" href="../css/law_touch.css" rel="stylesheet" />
-    <script type="text/javascript" src="../css/mobi.min.js" charset="gbk"></script>
+    <meta name="keywords" content="查法规，法律法规" /><meta name="description" content="找法网手机版为您提供宪法、民商法、婚姻法等最全面法律法规查询，同时提供律师为您解决法律难题" />	<link type="text/css" href="/css/law_touch.css" rel="stylesheet" />
+    <script type="text/javascript" src="/css/mobi.min.js" charset="gbk"></script>
 
 
 </head>
