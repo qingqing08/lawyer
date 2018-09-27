@@ -34,7 +34,8 @@
 
     <ul>
         @foreach($condata as $v)
-        <li>{{@$v->wx_name}}:{{@$v->content}}</li>
+            <input type="hidden" value="{{@$v->con_id}}"  name="con_id">
+        <li><a id="ret">{{@$v->wx_name}}:{{@$v->content}}</a></li>
         @endforeach
     </ul>
 
@@ -46,7 +47,7 @@
     $("#pin").on('click',function(){
         var content = $("#content").val();
         // alert(content);return false;
-        var h_id =$('input[name=h_id]').val();
+        var h_id = $('input[name=h_id]').val();
         $.ajaxSetup({
                   headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
               });
@@ -54,6 +55,8 @@
                 url:"hotspot-comment",
                 type:"post",
                 dataType:"json",
+                cache:false,
+                async:false,
                 data:{content:content,h_id:h_id},
                 success:function (res) {
                     if (res.code == 1){
@@ -64,6 +67,33 @@
                     }
                 }
         });
+    });
+
+    $("#ret").on('click',function(){
+        var 
+        var con_id = $('input[name=con_id]').val();
+        alert(con_id);return false;
+
+        $.ajaxSetup({
+                  headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+              });
+
+        $.ajax({
+                url:"hotspot-comment",
+                type:"post",
+                dataType:"json",
+                data:{content:content,h_id:h_id},
+                success:function (res) {
+                    if (res.code == 1){
+                        alert('跟帖成功');
+                        window.location.href="hotspot-view?h_id="+h_id;
+                    }else{
+                        alert('网络繁忙,稍后重试');
+                    }
+                }
+        });
+
+
     });
 
 $(function(){
