@@ -60,15 +60,26 @@ class Question extends Controller{
 
         $result = DB::table('question')->insert($data);
         if ($result){
+            $order_id = date("YmdHis").rand('100000' , 999999);
             $order_data = [
-
+                'u_id'  =>  $user_info->u_id,
+                'order_num' =>  $order_id,
+                'o_content' =>  '发布悬赏问题',
+                'o_price'   =>  $money,
+                'o_type'    =>  1,
+                'o_ctime'   =>  time(),
             ];
-        }
-        $qrcode = new QRcode();
-        $qrurl = $this->getQrUrl('1218');
 
-        //2.生成二维码
-        QRcode::png($qrurl);
+            $res = DB::table('order')->insert($order_data);
+            if ($res){
+                $qrcode = new QRcode();
+                $qrurl = $this->getQrUrl($order_id);
+
+                //2.生成二维码
+                QRcode::png($qrurl);
+            }
+        }
+
     }
 
     public function getQrUrl($pid){
