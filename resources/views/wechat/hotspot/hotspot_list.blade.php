@@ -14,7 +14,7 @@
         <ul class="fl_list">
         	@foreach($data as $v)
             <li>
-                <a href="/hotspot-view?h_id={{$v->h_id}}">{{@$v->h_title}}<span> 时间:<?php echo date('m-d H:i:s',$v->h_ctime); ?></span></a>
+                <a href="hotspot-view?h_id={{$v->h_id}}">{{@$v->h_title}}<span> 时间:<?php echo date('m-d H:i:s',$v->h_ctime); ?></span></a>
             </li>   
             @endforeach    
         </ul>
