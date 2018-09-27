@@ -147,4 +147,5 @@ Route::get('/question-list' , 'Wechat\Question@question_list');
 //发布问题
 Route::get('/release-question' , 'Wechat\Question@release_question');
 Route::get('pay-do' , 'Wechat\Question@pay_do');
+Route::get('question-view' , 'Wechat@Question@question_view');
 
