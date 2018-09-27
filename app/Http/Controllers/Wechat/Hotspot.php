@@ -27,7 +27,7 @@ class Hotspot extends Controller{
                 } else {
                     $data = DB::table('hotspot')->get();
                     // print_r($data);exit;
-                    return view('wechat.hotspot.hotspot_list');
+                    return view('wechat.hotspot.hotspot_list',['data'=>$data]);
                 }
             }
         }
