@@ -28,6 +28,9 @@ Route::get('create-menu' , 'Wechat@create_menu');
 Route::get('create' , 'Wechat@create');
 Route::get('weixin-auth' , 'Wechat@weixin_auth');
 
+//回调地址
+Route::get('notify' , 'Wechat@notify');
+
 /* ---------------------------------------------------------------------- */
 
 //后台首页
