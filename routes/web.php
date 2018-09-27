@@ -125,7 +125,7 @@ Route::get('/admin/integral-list' , 'Admin\Integral@integral_list');
 /* 实时热点 */
 Route::get('/hotspot-list' , 'Wechat\Hotspot@hotspot_list');
 Route::get('/hotspot-view' , 'Wechat\Hotspot@hotspot_view');
-
+Route::get('/hotspot-comment' , 'Wechat\Hotspot@hotspot_comment');
 /* 找律师 */
 Route::get('/find-lawyer' , 'Wechat\Lawyer@find_lawyer');
 
@@ -140,6 +140,8 @@ Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
 Route::get('/type' , 'Wechat\Knowledge@type');
 //常识详情
 Route::get('/knowledge-view' , 'Wechat\Knowledge@knowledge_view');
+//常识的查询
+Route::get('/knowledge-vague' , 'Wechat\Knowledge@knowledge_vague');
 
 /* 发布悬赏问题 */
 //问题列表

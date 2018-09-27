@@ -57,4 +57,7 @@ class Knowledge extends Controller{
             $data->k_ctime=date('Y-m-d H:i:s',$data->k_ctime);
         return view('wechat.knowledge.view',['data'=>$data]);
     }
+    public function knowledge_vague(){
+
+    }
 }

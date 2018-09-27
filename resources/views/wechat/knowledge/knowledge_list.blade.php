@@ -45,11 +45,6 @@
         <a href="../register">注册</a>			<!--<a href="http://m.findlaw.cn/shortcut">下载到手机桌面</a>-->
         <a href="#" class="to_top tl">TOP</a>
     </div>
-    <div class="footer_version">
-        <a href="../../3g.findlaw.cn/default.htm">普通版</a>
-        <a href="../default.htm">触屏版</a>
-        <a href="../../china.findlaw.cn/default.htm">电脑版</a>
-    </div>
     <div class="footer_nav">
         <a href="../default.htm">首页</a>
         <a href="../ask/ask.php">发咨询</a>
