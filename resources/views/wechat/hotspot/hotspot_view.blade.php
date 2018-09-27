@@ -44,7 +44,9 @@
 
     $("#pin").on('click',function(){
         var content = $("#content").val();
+        // alert(content);return false;
         var h_id =$('input[name=h_id]').val();
+        alert(h_id);return false;
         $.ajaxSetup({
                   headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
               });
@@ -55,15 +57,13 @@
                 dataType:"json",
                 data:{content:content,h_id:h_id},
                 success:function (res) {
-                    console.log(res);
-                    // if (res.code == 1){
-                    // layer.msg(res.font, {icon: res.code, time: 1500}, function () {
-                    //     layer.close(layer.index);
-                    //     // window.parent.location.reload();
-                    // });
-                    // }  else {
-                    //     layer.msg(data.font, {icon: data.code});
-                    // }
+                    // console.log(res);
+                    if (res.code == 1){
+                        alert('评论成功');
+                        window.location.href="hotspot-view?h_id="+h_id;
+                    }else{
+                        alert('网络繁忙,稍后重试');
+                    }
                 }
         });
     });
