@@ -10,7 +10,7 @@
 </head>
 <body>
 <header class="sub_header">
-    <a href="../fagui" class="b_link">列表</a>
+    <a href="/knowledge-list" class="b_link">列表</a>
     <ul class="top_nav">
         <li><a href="ask.html">发咨询</a></li>
         <li><a href="../lawyer/lawyer.html">找律师</a></li>
