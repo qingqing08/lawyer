@@ -40,7 +40,7 @@
 
         //监听提交
         form.on('submit(formDemo)', function(){
-            var data = $("input[name=sex]").val()
+            var data = $("input[name=sex]:checked").val()
             alert(data)
             return false;
         });
