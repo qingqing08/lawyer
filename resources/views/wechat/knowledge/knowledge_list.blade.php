@@ -34,9 +34,9 @@
     </ul>
 </div>
 <div class="search_bar fl_form">
-    <form>
+    <form method="post" action="/knowledge-vague">
         @csrf
-        <input class="txt_ipt mr10" type="text" name="kw"/><input class="btn" value="搜法规" type="button" />
+        <input class="txt_ipt mr10" type="text" name="keyword"/><input class="btn" value="搜法规" type="submit" />
     </form>
 </div>
 <a class="tips_box" href="../tel_3A400-676-8333"><div class="tips_inbox"><span class="tips_tel">400-676-8333</span><span class="tips_inbox-text">点击免费咨询律师</span></div></a>
@@ -57,7 +57,7 @@
 </body>
 </html>
 <script type="text/javascript">
-    $('input[type=button]').click(function(){
+    $('input[type=submit]').click(function(){
         var token = $("input[name=_token]").val();
         var keyword=$('input[name=kw]').val();
         $.ajax({
