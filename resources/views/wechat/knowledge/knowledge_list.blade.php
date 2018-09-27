@@ -3,7 +3,7 @@
 <head>
     <meta charset="gbk" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>仿找法网触屏手机wap法律网站模板法规-【shenghuofuwu/chaxun/】</title>
+    <title>法律常识</title>
     <meta name="keywords" content="查法规，法律法规" /><meta name="description" content="找法网手机版为您提供宪法、民商法、婚姻法等最全面法律法规查询，同时提供律师为您解决法律难题" />	<link type="text/css" href="/css/law_touch.css" rel="stylesheet" />
     <script type="text/javascript" src="/css/mobi.min.js" charset="gbk"></script>
 
@@ -24,20 +24,10 @@
         <dt>法律体系：<a class="fl_link f14" href="../area@ar=a_7C170200">按地区分类&gt;&gt;</a></dt>
         <dd><a href="../fagui" class="cur">全部</a></dd>
         <dd><a class="" href="../fagui/s10">宪法类</a></dd><dd><a class="" href="../fagui/s20">民商法</a></dd><dd><a class="" href="../fagui/s30">刑法类</a></dd>        <dd><a href="../fagui/types">更多</a></dd>
-    </dl>    <ul class="fl_list">
-
+    </dl>
+    <ul class="fl_list">
         <li><a href="../fagui/article_5F25895.html">中华人民共和国婚姻法(2001)</a></li>
-        <li><a href="../fagui/article_24322.html">中华人民共和国合同法</a></li>
-        <li><a href="../fagui/article_127907.html">中华人民共和国劳动合同法</a></li>
-        <li><a href="../fagui/article_363931.html">中华人民共和国刑法</a></li>
-        <li><a href="../fagui/article_26709.html">中华人民共和国公司法</a></li>
-        <li><a href="../fagui/article_71092.html">中华人民共和国道理交通安全法</a></li>
-        <li><a href="../fagui/article_113023.html">中华人民共和国城市房地产管理法</a></li>
-        <li><a href="../fagui/article_23836.html">中华人民共和国著作权法</a></li>
-        <li><a href="../fagui/article_22753.html">中华人民共和国民法通则</a></li>
-        <li><a href="../fagui/article_106078.html">医疗事故处理条例</a></li>
-        <li><a href="../fagui/article_366063.html">婚姻法司法解释三</a></li>
-        <li><a href="../fagui/article_358033.html">工伤保险条例</a></li>    </ul>
+    </ul>
     <div class="page_control item_bt c666"><p class="mb10"><a class="next_p page_btn mr10" href="../fagui/page2">下一页</a><span>(1/22502)</span></p><p><form id="pagesForm" action="http://m.findlaw.cn/fagui/" method="get">跳到第<input class="txt_ipt" type="number" max="22502" min="1" name="page">页<input class="page_btn ml10" type="submit" value="跳转"><input type="hidden" name="__hash__" value="3225784402dc7b54cd060f8599a0c569" /></form></p>            <script type="text/javascript">
             $('#pagesForm').submit(function(){
                 var page = $(this).children('input[name=page]').val();

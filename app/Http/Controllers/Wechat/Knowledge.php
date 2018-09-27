@@ -23,6 +23,12 @@ class Knowledge extends Controller{
                 if ($user_info->u_type == 0){
                     return view('wechat.user.register' , ['wx_openid'=>$openid]);
                 } else {
+                    $data=DB::table('knowledge')
+                        ->join('type','knowledge.t_id','=','type.t_id')
+                        ->get();
+                    $arr=DB::table('type')->select()->get();
+                    print_r($arr);
+                    dd($data);
                     return view('wechat.knowledge.knowledge_list');
                 }
             }
