@@ -39,7 +39,12 @@ class Hotspot extends Controller{
         ->where('h_id',$id)
         ->first();
 
-        return view('wechat.hotspot.hotspot_view',['datainfo'=>$datainfo]);
+        $condata=DB::table('con_hotspot')
+        ->join('user','con_hotspot.u_id','user.u_id')
+        ->where('h_id',$id)
+        ->get();
+        
+        return view('wechat.hotspot.hotspot_view',['datainfo'=>$datainfo,'condata'=>$condata]);
     }
     //评论
     public function hotspot_comment(){

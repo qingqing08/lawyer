@@ -28,15 +28,16 @@
         <span>评论区</span>
         <br>
         <input type="hidden" name="h_id" value="{{@$datainfo->h_id}}">
-        <textarea id="content" style="width: 220px; height: 70px;"></textarea>
-         <br>
-        <a id="pin">评论</a>
+        <textarea id="content" style="width: 260px; height: 70px;"></textarea>
+        &nbsp;&nbsp;<a id="pin">评论</a>
     </div>
-    <!--这里写评论
+
     <ul>
-        <li></li>
+        @foreach($condata as $v)
+        <li>{{@$v->wx_name}}:{{@$v->content}}</li>
+        @endforeach
     </ul>
-    -->
+
 </body>
 </html>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -46,18 +47,15 @@
         var content = $("#content").val();
         // alert(content);return false;
         var h_id =$('input[name=h_id]').val();
-        alert(h_id);return false;
         $.ajaxSetup({
                   headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
               });
-
         $.ajax({
                 url:"hotspot-comment",
                 type:"post",
                 dataType:"json",
                 data:{content:content,h_id:h_id},
                 success:function (res) {
-                    // console.log(res);
                     if (res.code == 1){
                         alert('评论成功');
                         window.location.href="hotspot-view?h_id="+h_id;
