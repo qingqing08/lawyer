@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use View;
+use Memcache;
 
 class Hotspot extends Controller{
     //
@@ -23,9 +25,11 @@ class Hotspot extends Controller{
                 if ($user_info->u_type == 0){
                     return view('wechat.user.register' , ['wx_openid'=>$openid]);
                 } else {
-                    return view('wechat.hotspot.list');
+                    return view('wechat.hotspot.hotspot_list');
                 }
             }
         }
     }
+
+
 }

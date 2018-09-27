@@ -119,21 +119,17 @@
     /*用户-停用*/
     function member_stop(obj,id){
         layer.confirm('确认要停用吗？',function(index){
+            var token = $("input[name=_token]").val();
 
             if($(obj).attr('title')=='启用'){
                 $.ajax({
                     url:"/admin/admin-startstop",
                     type:"post",
-                    data:{a_id:id,_token:token},
+                    data:{a_id:id,status:0,_token:token},
                     cache:false,
                     async:false,
-                    success:function (data){
-                        if (data.code == 1) {
-                            layer.msg(data.msg,{icon:data.code});
-                        } else {
-                            layer.msg(data.msg, {icon: data.code});
-                        }
-
+                    success:function(data){
+                        alert(data);
                     }
                 })
                 //发异步把用户状态进行更改
@@ -144,6 +140,13 @@
                 layer.msg('已停用!',{icon: 5,time:1000});
 
             }else{
+                $.ajax({
+                    url:"/admin/admin-startstop",
+                    type:"post",
+                    data:{a_id:id,status:0,_token:token},
+                    cache:false,
+                    async:false,
+                });
                 $(obj).attr('title','启用')
                 $(obj).find('i').html('&#xe601;');
 

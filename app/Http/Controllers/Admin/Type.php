@@ -37,15 +37,15 @@ class Type extends Controller
     }
 
     /**
-     *类型列表
-     */
+    *类型列表
+    */
     public function type_list(){
          $data = DB::table('type')->get();
          return view('admin.type.type_list',['data'=>$data,'title'=>'类型列表']);
     }
     /**
-     * 类型修改
-     */
+    * 类型修改
+    */
     public function type_modify(){
         $tid=input::get('t_id');
         $data = DB::table('type')
@@ -55,8 +55,8 @@ class Type extends Controller
     }
 
     /**
-     * 执行修改
-     */
+    * 执行修改
+    */
     public function type_modify_do(){
         $tid=input::post('t_id');
         $tname=input::post('t_name');
