@@ -132,6 +132,7 @@ Route::get('/find-lawyer' , 'Wechat\Lawyer@find_lawyer');
 /* 个人中心 */
 Route::get('/self' , 'Wechat\User@self');
 Route::post('/register-do' , 'Wechat\User@register_do');
+Route::get('/selfShow' , 'Wechat\User@selfShow');
 
 /* 法律常识 */
 Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
