@@ -59,6 +59,6 @@ class Knowledge extends Controller{
     }
     public function knowledge_vague(){
         $keyword=Input::post('keyword');
-        dd($keyword);
+        return ($keyword);
     }
 }
