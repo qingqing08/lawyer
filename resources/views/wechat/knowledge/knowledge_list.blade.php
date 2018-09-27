@@ -66,9 +66,6 @@
             data:{keyword:keyword,_token:token},
             cache:false,
             async:false,
-            success:function (data){
-                alert(data);
-            }
         })
     })
     $(function(){
