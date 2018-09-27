@@ -22,30 +22,16 @@
     <div class="ly_info f17">
         <p class="hs_link"><img alt="刘小丽" src="{{$user_info -> wx_headeimg}}" /></p>
         <p><span class="ly_name">{{$user_info -> wx_name}}</span></p>
-        <p>等级 <span>
+        <p><span>
                 @if($user_info -> u_type == 1)
                     <?php echo '普通会员'?>
                     @else
                     <?php echo '律师'?>
                     @endif
             </span></p>
-        <input type="button" value="充值"><input type="button" value="体现"><input type="button" value="余额"><span>{{$user_info -> balance}}</span>
+        <input type="button" value="充值">   <input type="button" value="提现">  余额：<span>{{$user_info -> balance}}</span>
     </div>
-
-
-<a class="tips_box" href="tel_3A400-676-8333"><div class="tips_inbox"><span class="tips_tel">400-676-8333</span><span class="tips_inbox-text">点击免费咨询律师</span></div></a>
-<footer class="f16 tc c666">
-    <div class="footer_bar"><!--<a href="http://m.findlaw.cn/shortcut">下载到手机桌面</a>-->
-        <a href="#" class="to_top tl">TOP</a>
-    </div>
-    <div class="footer_version">
-        <a href="../../3g.findlaw.cn/default.htm">普通版</a>
-        <a href="../default.htm">触屏版</a>
-        <a href="../../china.findlaw.cn/default.htm">电脑版</a>
-    </div>
-
-    <p class="copyright">Copyright@2003-2014　版权所有 找法网（Findlaw.cn）- 中国最大的法律服务平台</p>
-</footer>
+   </div>
 </body>
 </html>
 <script type="text/javascript">
