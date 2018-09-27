@@ -25,8 +25,11 @@
             <p>{{@$datainfo->h_content}}</p>              
     </div>
     <div>
-        <a id="pin">评论</a>
+        <span>评论区</span>
+        <textarea id="pin" style="width: 120px; height: 70px;"></textarea>
+        <a href="">评论</a><a href="">取消</a>
     </div>
+
     <br>
     <br>
     <br>
