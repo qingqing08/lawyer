@@ -79,6 +79,31 @@ class User extends Controller{
 
         $money = $request -> get('money');
 
+        $openid = session::get('openid');
+
+        $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
+
+        $arr = [
+            'uid' => $user_info -> u_id,
+            'r_money' => $money,
+            'm_paytype' => 1,
+            'r_ctime' =>time()
+        ];
+
+        $id = DB::table('recharge') -> insertGetId($arr);
+
+        $data = [
+            'uid' => $user_info -> u_id,
+            'data_id' => $id,
+            'order_num' => $pid,
+            'o_content' => '充值',
+            'o_price' => $money,
+            'o_type' => '充值',
+            'o_status'=> 1,
+            'o_paystatus' => 0,
+            'o_ctime' => time()
+        ];
+
         $base = new Base();
 
         $params = [
