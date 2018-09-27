@@ -20,11 +20,10 @@
 </head>
 <form class="layui-form" action="">
     <div class="layui-form-item">
-        <label class="layui-form-label">复选框</label>
+        <label class="layui-form-label">单选框</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="like[write]" title="写作">
-            <input type="checkbox" name="like[read]" title="阅读" checked>
-            <input type="checkbox" name="like[dai]" title="发呆">
+            <input type="radio" name="sex" value="普通" title="普通">
+            <input type="radio" name="sex" value="律师" title="律师" checked>
         </div>
     </div>
     <div class="layui-form-item">
@@ -40,8 +39,8 @@
         var form = layui.form;
 
         //监听提交
-        form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
+        form.on('submit(formDemo)', function(){
+            var data = $("input[name=sex]").val()
             alert(data)
             return false;
         });
