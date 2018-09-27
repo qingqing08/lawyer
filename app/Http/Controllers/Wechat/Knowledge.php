@@ -59,6 +59,15 @@ class Knowledge extends Controller{
     }
     public function knowledge_vague(){
         $keyword=Input::post('keyword');
-        dd ($keyword);
+        $data=DB::table('knowledge')
+            ->orwhere('knowledge.k_title','like','%'.$keyword.'%')
+            ->join('type','knowledge.t_id','=','type.t_id')
+            ->get();
+        dd($data);
+        $type=DB::table('type')->select()->get();
+        foreach($data as $v){
+            $v->k_ctime=date('Y-m-d H:i:s',$v->k_ctime);
+        }
+        return view('wechat.knowledge.type',['data'=>$data,'type'=>$type]);
     }
 }
