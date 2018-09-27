@@ -32,7 +32,7 @@ class Hotspot extends Controller{
             }
         }
     }
-
+    //热点详细信息
     public function hotspot_view(){
         $id = input::get('h_id');
         $datainfo=DB::table('hotspot')
@@ -41,6 +41,27 @@ class Hotspot extends Controller{
 
         return view('wechat.hotspot.hotspot_view',['datainfo'=>$datainfo]);
     }
+    //评论
+    public function hotspot_comment(){
+        $openid = Session::get('openid');
+        $data = DB::table('user')
+        ->where('wx_openid',$openid)
+        ->first();
+        $u_id=$data->u_id;
+        $content = input::post('content');
+        $h_id = input::post('h_id');
+        $res=DB::table('con_hotspot')-insert([
+            'h_id'=>$h_id,
+            'u_id'=>$u_id,
+            'content'=>$content,
+            'level'=>0
+        ]);
+        if($res){
+            return ['font'=>'评论成功','code'=>1]; 
+        }else{
+            return ['font'=>'网络繁忙','code'=>2]; 
+        }
 
+    }
 
 }

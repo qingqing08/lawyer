@@ -27,20 +27,45 @@
     <div>
         <span>评论区</span>
         <br>
+        <input type="hidden" name="h_id" value="{{@$datainfo->h_id}}">
         <textarea id="content" style="width: 220px; height: 70px;"></textarea>
          <br>
-        <a id="pin">评论</a><a href="">取消</a>
+        <a id="pin">评论</a>
     </div>
+    <!--这里写评论
     <ul>
         <li></li>
     </ul>
+    -->
 </body>
 </html>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 
     $("#pin").on('click',function(){
-        alert('nihao');
+        var content = $("#content").val();
+        var h_id =$('input[name=h_id]').val();
+        $.ajaxSetup({
+                  headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+              });
+
+        $.ajax({
+                url:"hotspot-comment",
+                type:"post",
+                dataType:"json",
+                data:{content:content,h_id:h_id},
+                success:function (res) {
+                    console.log(res);
+                    // if (res.code == 1){
+                    // layer.msg(res.font, {icon: res.code, time: 1500}, function () {
+                    //     layer.close(layer.index);
+                    //     // window.parent.location.reload();
+                    // });
+                    // }  else {
+                    //     layer.msg(data.font, {icon: data.code});
+                    // }
+                }
+        });
     });
 
 $(function(){
