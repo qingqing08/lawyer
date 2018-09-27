@@ -35,6 +35,7 @@
 </div>
 <div class="search_bar fl_form">
     <form method="post" action="http://m.findlaw.cn/?m=fagui&a=search">
+        @csrf
         <input class="txt_ipt mr10" type="text" name="kw"/><input class="btn" value="搜法规" type="submit" />
         <input type="hidden" name="__hash__" value="3225784402dc7b54cd060f8599a0c569" /></form>
 </div>
@@ -56,7 +57,20 @@
 </body>
 </html>
 <script type="text/javascript">
-
+    $('input[type=submit]').click(function(){
+        var token = $("input[name=_token]").val();
+        var keyword=$('input[name=kw]').val();
+        $.ajax({
+            url:"/knowledge-vague",
+            type:"post",
+            data:{keyword:keyword,_token:token},
+            cache:false,
+            async:false,
+            success:function (data){
+                alert(data);
+            }
+        })
+    })
     $(function(){
         $(window).bind("scroll",function(){
             if(document.body.scrollTop>60){

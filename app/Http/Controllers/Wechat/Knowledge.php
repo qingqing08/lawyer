@@ -58,6 +58,7 @@ class Knowledge extends Controller{
         return view('wechat.knowledge.view',['data'=>$data]);
     }
     public function knowledge_vague(){
-
+        $keyword=Input::post('keyword');
+        dd($keyword);
     }
 }
