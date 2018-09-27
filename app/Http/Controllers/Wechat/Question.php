@@ -100,6 +100,29 @@ class Question extends Controller{
     public function question_view(){
         $q_id = Input::get('q_id');
 
-        echo $q_id;
+        $question_info = DB::table('question')->where('q_id' , $q_id)->first();
+        $user_info = DB::table('user')->where('u_id' , $question_info->u_id)->first();
+        $type_info = DB::table('type')->where('t_id' , $question_info->q_type)->first();
+
+        $question_info->wx_headimg = $user_info->wx_headeimg;
+        $question_info->u_id = $user_info->wx_name;
+        $question_info->q_type = $type_info->t_name;
+        $question_info->q_ctime = date("Y-m-d H:i:s" , $question_info->q_ctime);
+        $comment_list = DB::table('comment')->where('q_id' , $question_info->q_id)->get();
+        foreach ($comment_list as $comment){
+            $user = DB::table('user')->where('u_id' , $comment->u_id)->first();
+            $comment->u_id = $user->wx_name;
+            $comment->headimg = $user->wx_headeimg;
+            if ($user->u_type == 1){
+                $comment->u_type = '用户';
+            }
+            if ($user->u_type == 2){
+                $comment->u_type = '律师';
+            }
+            $comment->c_ctime = date("Y-m-d H:i:s" , $comment->c_ctime);
+        }
+        $question_info->comment_list = $comment_list;
+//        dd($question_info);
+        return view('wechat.question.view' , ['question_info'=>$question_info]);
     }
 }

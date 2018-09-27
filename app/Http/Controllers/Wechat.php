@@ -336,22 +336,24 @@ class Wechat extends Controller{
 //            echo DB::table('order')->where(['order_num'=>$arr['out_trade_no'] , 'o_paystatus'=>0])->toSql();
 //            dd($data);
             if ($arr['total_fee'] / 100 == $data->o_price){
-                $order_data = [
-                    'o_status'    =>  2,
-                    'o_paystatus'    =>  1,
-                ];
-
-                DB::table('question')->where(['q_id'=>$data->data_id , 'q_paystatus'=>0])->update(['q_paystatus'=>1]);
-                $result = DB::table('order')->where(['order_num'=>$arr['out_trade_no'] , 'o_paystatus'=>0])->update($order_data);
-                if ($result){
-//                    echo "success";die;
-                    $params = [
-                        'return_code'    => 'SUCCESS',
-                        'return_msg'    => 'OK'
+                if ($data->o_type == 1){
+                    $order_data = [
+                        'o_status'    =>  2,
+                        'o_paystatus'    =>  1,
                     ];
-                    echo $this->ArrToXml($params);
-                } else {
-                    print_r($result);
+
+                    DB::table('question')->where(['q_id'=>$data->data_id , 'q_paystatus'=>0])->update(['q_paystatus'=>1]);
+                    $result = DB::table('order')->where(['order_num'=>$arr['out_trade_no'] , 'o_paystatus'=>0])->update($order_data);
+                    if ($result){
+//                    echo "success";die;
+                        $params = [
+                            'return_code'    => 'SUCCESS',
+                            'return_msg'    => 'OK'
+                        ];
+                        echo $this->ArrToXml($params);
+                    } else {
+                        print_r($result);
+                    }
                 }
             } else {
                 echo "订单金额不符合";
