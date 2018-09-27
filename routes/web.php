@@ -26,6 +26,7 @@ Route::get('send-message' , 'Wechat@send_message');
 //创建自定义菜单
 Route::get('create-menu' , 'Wechat@create_menu');
 Route::get('create' , 'Wechat@create');
+Route::get('weixin-auth' , 'Wechat@weixin_auth');
 
 /* ---------------------------------------------------------------------- */
 
@@ -135,3 +136,4 @@ Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
 Route::get('/question-list' , 'Wechat\Question@question_list');
 //发布问题
 Route::get('/release-question' , 'Wechat\Question@release_question');
+Route::get('pay-do' , 'Wechat\Question@pay_do');

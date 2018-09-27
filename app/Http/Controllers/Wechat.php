@@ -302,6 +302,7 @@ class Wechat extends Controller{
         $user_data = file_get_contents($user_url);
 //
 //        dd($user_data);
+//        Session::put('userinfo' , $user_data);
         $user_arr = json_decode($user_data , true);
         $user_info = DB::table('user')->where('wx_openid' , $user_arr['openid'])->first();
         $data = [
