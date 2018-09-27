@@ -20,7 +20,7 @@
 </head>
 <form class="layui-form" action="">
     <div class="layui-form-item">
-        <label class="layui-form-label">单选框</label>
+        <label class="layui-form-label">请选择</label>
         <div class="layui-input-block">
             <input type="radio" name="sex" value="普通" title="普通">
             <input type="radio" name="sex" value="律师" title="律师" checked>
@@ -41,7 +41,13 @@
         //监听提交
         form.on('submit(formDemo)', function(){
             var data = $("input[name=sex]:checked").val()
-            alert(data)
+            $.post("/register-do" ,{data:data} ,function(res){
+                if(res.code == 1){
+                    layer.msg(data.msg , function () {
+                        window.location.href = "www.baidu.com";
+                    });
+                }
+            })
             return false;
         });
     });

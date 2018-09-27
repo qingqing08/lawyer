@@ -28,4 +28,22 @@ class User extends Controller{
             }
         }
     }
+
+    /**
+     *  选择律师还是普通
+     */
+    public function register_do(Request $request){
+
+        $data = $request -> post('data');
+
+        $openid = session::get('openid');
+
+        if($data == '律师'){
+            DB::table('user') -> where(['wx_openid' => $openid]) -> update(['u_type' => 2]);
+        }else{
+            DB::table('user') -> where(['wx_openid' => $openid]) -> update(['u_type' => 1]);
+        }
+
+        return (['code' => 1 , 'msg' => '请稍等']);
+    }
 }
