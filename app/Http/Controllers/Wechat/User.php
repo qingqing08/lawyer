@@ -97,7 +97,7 @@ class User extends Controller{
         $id = DB::table('recharge') -> insertGetId($arr);
 
         $data = [
-            'uid' => $user_info -> u_id,
+            'u_id' => $user_info -> u_id,
             'data_id' => $id,
             'order_num' => $pid,
             'o_content' => '充值',
@@ -105,6 +105,8 @@ class User extends Controller{
             'o_type' => '充值',
             'o_ctime' => time()
         ];
+
+        DB::table('order') -> insert($data);
 
         $base = new Base();
 
