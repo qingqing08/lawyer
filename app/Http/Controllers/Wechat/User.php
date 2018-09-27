@@ -101,7 +101,7 @@ class User extends Controller{
             'data_id' => $id,
             'order_num' => $pid,
             'o_content' => '充值',
-            'o_price' => $price,
+            'o_price' => $money,
             'o_type' => '2',
             'o_ctime' => time()
         ];
