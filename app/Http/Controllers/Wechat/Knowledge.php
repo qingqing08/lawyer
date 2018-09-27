@@ -51,7 +51,7 @@ class Knowledge extends Controller{
     public function knowledge_view(){
         $k_id=Input::get('k_id');
         $data=DB::table('knowledge')
-            ->where(['k_id'=>$k_id])
+            ->where(['law_type.k_id'=>$k_id])
             ->join('type','knowledge.t_id','=','type.t_id')
             ->get();
         foreach($data as $v){
