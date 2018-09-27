@@ -27,7 +27,7 @@
         var money = $("input[type=text]").val();
         if(money != ''){
             $('h3').html('请使用微信扫描二维码')
-            $('img').attr('src' , 'http://pengqq.jebt.top/generateCode?pid={{$order_id}}&money='+ money)
+            $('img').attr('src' , 'http://pengqq.jebt.top/generateCode?order_id={{$order_id}}&money='+ money)
         }
     })
 </script>
