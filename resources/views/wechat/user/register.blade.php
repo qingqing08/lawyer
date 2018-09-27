@@ -16,8 +16,29 @@
     <script type="text/javascript" src="./layui/js/xadmin.js"></script>
 </head>
 <body>
-<from>
-    请选择
-    <input type="radio" name="register" value="普通">普通
-    <input type="radio" name="register" value="律师">律师
-</from>
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label">单选框</label>
+        <div class="layui-input-block">
+            <input type="radio" name="sex" value="普通" title="普通">
+            <input type="radio" name="sex" value="律师" title="律师" checked>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <input class="layui-btn" lay-submit lay-filter="formDemo">立即提交
+        </div>
+    </div>
+</form>
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+</script>
