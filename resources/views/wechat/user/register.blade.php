@@ -18,7 +18,7 @@
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
 </head>
-<form class="layui-form" action="">
+<form class="layui-form" action="/register-do" method="post">
     <div class="layui-form-item">
         <label class="layui-form-label">请选择</label>
         <div class="layui-input-block">
@@ -32,23 +32,3 @@
         </div>
     </div>
  </form>
-
-<script>
-    //Demo
-    layui.use('form', function(){
-        var form = layui.form;
-
-        //监听提交
-        form.on('submit(formDemo)', function(){
-            var data = $("input[name=sex]:checked").val()
-            $.post("/register-do" ,{data:data} ,function(res){
-                if(res.code == 1){
-                    layer.msg(data.msg , function () {
-                        window.location.href = "www.baidu.com";
-                    });
-                }
-            })
-            return false;
-        });
-    });
-</script>

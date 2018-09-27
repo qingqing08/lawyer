@@ -34,7 +34,7 @@ class User extends Controller{
      */
     public function register_do(Request $request){
 
-        $data = $request -> post('data');
+        $data = $request -> post('sex');
 
         $openid = session::get('openid');
 
@@ -44,6 +44,6 @@ class User extends Controller{
             DB::table('user') -> where(['wx_openid' => $openid]) -> update(['u_type' => 1]);
         }
 
-        return (['code' => 1 , 'msg' => '请稍等']);
+        return (redirect("www.baidu.com"));
     }
 }
