@@ -21,7 +21,7 @@
 </header>
 <div>
     <dl class="tag_box c666 bgcfff dash_bb clearfix">
-        <dt>法律体系：<a class="fl_link f14" href="../area@ar=a_7C170200">按地区分类&gt;&gt;</a></dt>
+        <dt>法律体系：</dt>
         <dd><a href="/knowledge-list" class="cur">全部</a></dd>
         @foreach($type as $v)
         <dd><a class="" href="/type?t_id={{$v->t_id}}">{{$v->t_name}}</a></dd>
