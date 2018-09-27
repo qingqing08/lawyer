@@ -26,8 +26,8 @@ class Hotspot extends Controller{
                     return view('wechat.user.register' , ['wx_openid'=>$openid]);
                 } else {
                     $data = DB::table('hotspot')->get();
-                    print_r($data);exit;
-                    // return view('wechat.hotspot.hotspot_list');
+                    // print_r($data);exit;
+                    return view('wechat.hotspot.hotspot_list');
                 }
             }
         }
