@@ -18,11 +18,19 @@
         </ul>
     </div>
 </div>
-        
+    
     <div class="new_ask" >
+        <span> <?php echo date('M-d H:i:s',$datainfo->h_ctime);?> </span>
             <p>{{@$datainfo->h_content}}</p>              
     </div>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
         <div class="footer_version">
             <a href="../3g.findlaw.cn/default.htm">普通版</a>
             <a href="default.htm">触屏版</a>
