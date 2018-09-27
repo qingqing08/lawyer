@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use JSSDK;
 use Base;
+use QRcode;
 
 
 class Question extends Controller{
@@ -43,63 +44,49 @@ class Question extends Controller{
     }
 
     public function pay_do(){
-        $base = new Base();
-        $openid = $_GET['openid'];
-        $openid = "owRHY1cti1oJT7ZfEgzXNbTyJPEo";
-        $money = $_GET['money'];
+        $money = Input::get('money');
         $q_content = Input::get('q_content');
-        $out_trade_no = date('Ymd').time().rand(10000,99999);
-        $user_info = DB::table('user')->where('wx_openid' , $openid)->first();
-        $user_id = $user_info->u_id;
+        $openid = Input::get('openid');
 
+        $user_info = DB::table('user')->where('wx_openid' , $openid)->first();
         $data = [
-            'u_id'  =>  $user_id,
-            'q_content' =>  $q_content,
-            'q_type'    =>  2,
             'money' =>  $money,
+            'q_content' =>  $q_content,
+            'u_id'  =>  $user_info->u_id,
+            'q_type'    =>  1,
             'q_ctime'   =>  time(),
-            'validity_time' =>  2,
+            'validity_time' =>  7,
         ];
 
-        DB::table('question')->insert($data);
+        $result = DB::table('question')->insert($data);
+        if ($result){
+            $order_data = [
+
+            ];
+        }
+        $qrcode = new QRcode();
+        $qrurl = $this->getQrUrl('1218');
+
+        //2.生成二维码
+        QRcode::png($qrurl);
+    }
+
+    public function getQrUrl($pid){
+        $base = new Base();
+        //调用统一下单API
         $params = [
             'appid'=> $base::APPID,
             'mch_id'=> $base::MCHID,
-            'nonce_str'=>uniqid(),
-            'body'=> '发布悬赏问题',
-            'out_trade_no'=> $out_trade_no,
-            'total_fee'=> $money*100,//2分
-            'spbill_create_ip'=>$_SERVER['REMOTE_ADDR'],
+            'nonce_str'=>md5(time()),
+            'body'=> '扫码支付模式二',
+            'out_trade_no'=> $pid,
+            'total_fee'=> 2,
+            'spbill_create_ip'=>$_SERVER['SERVER_ADDR'],
             'notify_url'=> $base::NOTIFY,
-            'trade_type'=>'JSAPI',
-            'openid'=> $openid,
+            'trade_type'=>'NATIVE',
+            'product_id'=>$pid
         ];
-
-        // var_dump($params);die;
         $arr = $base->unifiedorder($params);
-        // var_dump($arr);die;
-
-        // $arr = $this->getQrUrl($out_trade_no,$money * 100 , $openid);
-        if($arr){
-            $info['appid'] = $base::APPID;
-            $info['package'] = "prepay_id=".$arr['prepay_id'];
-            $info['timestamp'] = time();
-            $info['nonceStr'] = uniqid();
-            $info['signType'] = "MD5";
-            $params = [
-                'appId' => $info['appid'],
-                'package' =>$info['package'],
-                'timeStamp'	=> $info['timestamp'],
-                'nonceStr'		=> $info['nonceStr'],
-                'signType' => $info['signType']
-            ];
-            $sign = $base->getSign($params);
-            $info['paySign'] = $sign;
-            $info['status'] = 1;
-            // return $info;
-            echo json_encode($info);
-        }else{
-            echo json_encode(['status'=>2,'data'=>$arr]);
-        }
+        return $arr['code_url'];
     }
 }
