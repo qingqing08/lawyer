@@ -57,6 +57,6 @@ class User extends Controller{
 
         $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
 
-        return view('wechat.user.selfshow' , ['user_info' => $user_info]);
+        return view('wechat.user.self' , ['user_info' => $user_info]);
     }
 }
