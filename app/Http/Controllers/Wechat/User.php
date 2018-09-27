@@ -87,6 +87,7 @@ class User extends Controller{
             'uid' => $user_info -> u_id,
             'r_money' => $money,
             'm_paytype' => 1,
+            'r_status' => 0,
             'r_ctime' =>time()
         ];
 
@@ -99,8 +100,6 @@ class User extends Controller{
             'o_content' => '充值',
             'o_price' => $money,
             'o_type' => '充值',
-            'o_status'=> 1,
-            'o_paystatus' => 0,
             'o_ctime' => time()
         ];
 

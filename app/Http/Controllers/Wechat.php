@@ -355,6 +355,31 @@ class Wechat extends Controller{
                         print_r($result);
                     }
                 }
+
+                if($data->o_type == 2){
+                    $order_data = [
+                       'o_status' => 2,
+                        'o_paystatus'    =>  1,
+                    ];
+
+                    $orderinfo = DB::table('order') -> where(['order_num' => $arr['out_trade_no']]) -> first();
+
+                    DB::table('recharge') -> where(['r_id' => $orderinfo -> data_id]) -> update(['r_status' => 1]);
+
+                    $res = DB::table('order') -> where(['order_num' => $arr['out_trade_no']]) -> update($order_data);
+
+                    if($res){
+
+                        $params = [
+                            'return_code'    => 'SUCCESS',
+                            'return_msg'    => 'OK'
+                        ];
+                        echo $this->ArrToXml($params);
+
+                    }else{
+                        print_r($res);
+                    }
+                }
             } else {
                 echo "订单金额不符合";
             }
