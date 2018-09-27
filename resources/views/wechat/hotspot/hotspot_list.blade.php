@@ -14,7 +14,7 @@
         <ul class="fl_list">
         	@foreach($data as $v)
             <li>
-                <a href="">{{@$v->h_title}}<span>时间:<?php echo date('Y-m-d H:i:s',$v->h_ctime); ?></span></a>
+                <a href="">{{@$v->h_title}}<span> 时间:<?php echo date('m-d H:i:s',$v->h_ctime); ?></span></a>
             </li>   
             @endforeach    
         </ul>
