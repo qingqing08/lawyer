@@ -44,6 +44,19 @@ class User extends Controller{
             DB::table('user') -> where(['wx_openid' => $openid]) -> update(['u_type' => 1]);
         }
 
-        return (redirect("www.baidu.com"));
+        header("refresh:1;url=/selfShow");
+    }
+
+
+    /**
+     *  展示自己
+     */
+    public function selfShow(){
+
+        $openid = session::get('openid');
+
+        $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
+
+        return view('wechat.user.selfshow' , ['user_info' => $user_info]);
     }
 }
