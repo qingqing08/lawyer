@@ -44,8 +44,9 @@
 
     $("#pin").on('click',function(){
         var content = $("#content").val();
-        alert(content);return false;
+        // alert(content);return false;
         var h_id =$('input[name=h_id]').val();
+        alert(h_id);return false;
         $.ajaxSetup({
                   headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
               });
