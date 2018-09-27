@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/lib/layui/css/layui.css">
 @foreach($question_list as $question)
 <div style="height: 150px;width: 100%;">
+    <a href="question-view?q_id={{ $question->q_id }}">
     <div style="float: left; width: 150px;padding-left: 20px;" >
         <img src="{{ $question->wx_headimg }}" alt="" width="150">
     </div>
@@ -23,6 +24,7 @@
         <span style="float: right;margin-right: 250px;">{{ $question->q_ctime }}</span>
         </div>
     </div>
+    </a>
 </div>
 <hr style="width: 100%;">
 @endforeach

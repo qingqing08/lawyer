@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use think\console\Input;
 
 class Wechat extends Controller{
     //
@@ -317,6 +318,61 @@ class Wechat extends Controller{
             DB::table('user')->insert($data);
             header("location:".$state);
         }
+    }
+
+    public function notify(){
+        $xml = file_get_contents('php://input','r');
+        file_put_contents("./notify.log" , $xml."\r\n" , FILE_APPEND);
+
+        if($xml == '') $arr = [];
+        libxml_disable_entity_loader(true);
+        $arr = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
+
+
+//        print_r($arr);die;
+        if ($arr['result_code'] == "SUCCESS" && $arr['return_code'] == "SUCCESS"){
+            $data = DB::table('order')->where(['order_num'=>$arr['out_trade_no'] , 'o_paystatus'=>0])->first();
+
+//            echo DB::table('order')->where(['order_num'=>$arr['out_trade_no'] , 'o_paystatus'=>0])->toSql();
+//            dd($data);
+            if ($arr['total_fee'] / 100 == $data->o_price){
+                $order_data = [
+                    'o_status'    =>  2,
+                    'o_paystatus'    =>  1,
+                ];
+
+                DB::table('question')->where(['q_id'=>$data->data_id , 'q_paystatus'=>0])->update(['q_paystatus'=>1]);
+                $result = DB::table('order')->where(['order_num'=>$arr['out_trade_no'] , 'o_paystatus'=>0])->update($order_data);
+                if ($result){
+//                    echo "success";die;
+                    $params = [
+                        'return_code'    => 'SUCCESS',
+                        'return_msg'    => 'OK'
+                    ];
+                    echo $this->ArrToXml($params);
+                } else {
+                    print_r($result);
+                }
+            } else {
+                echo "订单金额不符合";
+            }
+        }
+    }
+
+    public function ArrToXml($shuzu){
+        if(!is_array($shuzu) || count($shuzu) == 0) return '';
+
+        $xml = "<xml>";
+        foreach ($shuzu as $key=>$val)
+        {
+            if (is_numeric($val)){
+                $xml.="<".$key.">".$val."</".$key.">";
+            }else{
+                $xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
+            }
+        }
+        $xml.="</xml>";
+        return $xml;
     }
 
 }

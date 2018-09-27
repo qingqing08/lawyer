@@ -16,7 +16,7 @@ class Question extends Controller{
     //
 
     public function question_list(){
-        $question_list = DB::table('question')->get();
+        $question_list = DB::table('question')->where('q_paystatus' , 1)->get();
 
         foreach ($question_list as $question){
             $user_info = DB::table('user')->where('u_id' , $question->u_id)->first();
@@ -94,5 +94,12 @@ class Question extends Controller{
         ];
         $arr = $base->unifiedorder($params);
         return $arr['code_url'];
+    }
+
+
+    public function question_view(){
+        $q_id = Input::get('q_id');
+
+        echo $q_id;
     }
 }

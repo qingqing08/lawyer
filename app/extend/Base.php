@@ -12,7 +12,7 @@ class Base
     const MCHID = '1499304962'; //商户号需要更改成自己的
     const SECRET = '22ab8b899cbc54dc362899ca9eaf3233'; //开发者密码需要更改为自己的
     const UOURL = 'https://api.mch.weixin.qq.com/pay/unifiedorder'; //无需更改 统一下单API地址
-    const NOTIFY = 'http://pengqq.jebt.top/notify.php';   //支付通知地址需要更改成你自己服务器的地址
+    const NOTIFY = 'http://pengqq.jebt.top/notify';   //支付通知地址需要更改成你自己服务器的地址
 
     public function __construct() {
 

@@ -28,8 +28,9 @@ $arr = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', L
 //print_r($arr);die;
 if ($arr['result_code'] == "SUCCESS" && $arr['return_code'] == "SUCCESS"){
     $data = file_get_contents('http://pengqq.jebt.top/nofity?arr='.json_encode($arr));
-    if ($result){
-        echo "success";die;
+
+    print_r($data);die;
+    if ($data){
         $params = [
             'return_code'    => 'SUCCESS',
             'return_msg'    => 'OK'
