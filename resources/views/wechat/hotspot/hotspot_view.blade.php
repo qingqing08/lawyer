@@ -27,11 +27,13 @@
     <div>
         <span>评论区</span>
         <br>
-        <textarea id="pin" style="width: 120px; height: 70px;"></textarea>
+        <textarea id="content" style="width: 120px; height: 70px;"></textarea>
          <br>
-        <a href="">评论</a><a href="">取消</a>
+        <a id="pin">评论</a><a href="">取消</a>
     </div>
-
+    <ul>
+        <li></li>
+    </ul>
     <br>
     <br>
     <br>
