@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-
+use Base;
+use QRcode;
 class User extends Controller{
     //
     public function self(){
@@ -60,4 +61,43 @@ class User extends Controller{
 
         return view('wechat.user.self' , ['user_info' => $user_info]);
     }
+
+    /**
+     * 展示充值二维码
+     */
+    public function code(){
+        $pid = time();
+        return view('wechat.user.showcode' , ['pid' => $pid]);
+    }
+
+    /**
+     *  充值
+     */
+    public function generateCode(Request $request){
+
+        $pid = $request -> get('pid');
+
+        $base = new Base();
+
+        $params = [
+            'appid'=> $base::APPID,
+            'mch_id'=> $base::MCHID,
+            'nonce_str'=>md5(time()),
+            'body'=> '扫码支付',
+            'out_trade_no'=> $pid,
+            'total_fee'=> 2,
+            'spbill_create_ip'=>$_SERVER['SERVER_ADDR'],
+            'notify_url'=> $base::NOTIFY,
+            'trade_type'=>'NATIVE',
+            'product_id'=>$pid
+        ];
+
+        $arr = $base -> unifiedorder($params);
+        $url =  $arr['code_url'];
+
+        $qrcode = new QRcode();
+        $qrcode::png($url);
+
+    }
+
 }

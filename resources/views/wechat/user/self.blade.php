@@ -40,7 +40,7 @@
 
     //充值
     $('#Recharge').on('click' , function(){
-        alert(123)
+        window.location.href="/Code";
     })
 
     $(function(){

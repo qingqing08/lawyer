@@ -135,7 +135,8 @@ Route::post('/register-do' , 'Wechat\User@register_do');
 Route::get('/selfShow' , 'Wechat\User@selfShow');
 
 /* 充值 */
-Route::get('/code' , 'Wechat\User@code');
+Route::get('/Code' , 'Wechat\User@Code');
+Route::get('/generateCode' , 'Wechat\User@generateCode');
 
 /* 法律常识 */
 Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
