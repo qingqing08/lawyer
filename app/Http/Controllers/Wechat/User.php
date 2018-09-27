@@ -93,6 +93,7 @@ class User extends Controller{
             'r_ctime' =>time()
         ];
 
+//        dd($arr);
         $id = DB::table('recharge') -> insertGetId($arr);
 
         $data = [
