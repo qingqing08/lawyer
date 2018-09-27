@@ -63,7 +63,7 @@ class Knowledge extends Controller{
             ->orwhere('knowledge.k_title','like','%'.$keyword.'%')
             ->join('type','knowledge.t_id','=','type.t_id')
             ->get();
-        dd($data);
+//        dd($data);
         $type=DB::table('type')->select()->get();
         foreach($data as $v){
             $v->k_ctime=date('Y-m-d H:i:s',$v->k_ctime);
