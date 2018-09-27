@@ -39,7 +39,7 @@ class Knowledge extends Controller{
     public function type(){
         $t_id=Input::get('t_id');
         $data=DB::table('knowledge')
-            ->where(['law_type.t_id'=>$t_id])
+            ->where(['type.t_id'=>$t_id])
             ->join('type','knowledge.t_id','=','type.t_id')
             ->get();
         $type=DB::table('type')->select()->get();
@@ -51,7 +51,7 @@ class Knowledge extends Controller{
     public function knowledge_view(){
         $k_id=Input::get('k_id');
         $data=DB::table('knowledge')
-            ->where(['law_type.k_id'=>$k_id])
+            ->where(['type.k_id'=>$k_id])
             ->join('type','knowledge.t_id','=','type.t_id')
             ->get();
         foreach($data as $v){
