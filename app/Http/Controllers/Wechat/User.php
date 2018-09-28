@@ -205,7 +205,11 @@ class User extends Controller{
 
         $stringSignTemp = $stringA . '&key=' . $key;
 
-        echo $stringSignTemp;exit;
+        echo $stringSignTemp;
+
+        $sign = strtoupper(md5($stringSignTemp));
+
+        echo $sign;exit;
 
         //数组转xml
         function ArrToXml($arr)
