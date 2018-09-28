@@ -199,11 +199,11 @@ class User extends Controller{
         if(isset($params['sign'])){
             unset($params['sign']);
         }
-        print_r($params);
+        dump($params);
         //组装字符
         $str = urldecode(http_build_query($params));
         echo $str;
-        echo '</pre>';
+        echo '<pre>';
         $sign = strtoupper(md5($str . $key));
         echo $sign;exit;
         $params['sign'] = $sign;
