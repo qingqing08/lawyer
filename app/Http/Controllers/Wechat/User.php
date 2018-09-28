@@ -199,17 +199,15 @@ class User extends Controller{
         if(isset($params['sign'])){
             unset($params['sign']);
         }
-        dump($params);
+
         //组装字符
         $stringA = urldecode(http_build_query($params));
 
         $stringSignTemp = $stringA . '&key=' . $key;
-
-        echo $stringSignTemp;
-
+        
         $sign = strtoupper(md5($stringSignTemp));
 
-        echo $sign;exit;
+        $params['sign'] = $sign;
 
         //数组转xml
         function ArrToXml($arr)
