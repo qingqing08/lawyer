@@ -74,6 +74,6 @@ class Knowledge extends Controller{
     public function knowledge_submission(){
         $data=DB::table('type')->select()->get();
         dd($data);
-        return view('wechat.knowledge.submission',['data'=>$data]);
+//        return view('wechat.knowledge.submission',['data'=>$data]);
     }
 }
