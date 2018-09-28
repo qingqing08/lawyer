@@ -189,23 +189,25 @@ class User extends Controller{
             'desc' => '提现',
             'spbill_create_ip' => $_SERVER['REMOTE_ADDR']
         ];
-        print_r($params);
+
+
+        //排序
+        ksort($params);
+
         //去除数组的空值
         array_filter($params);
         if(isset($params['sign'])){
             unset($params['sign']);
         }
-        //排序
-        ksort($params);
-
+        dump($params);
         //组装字符
         $str = urldecode(http_build_query($params));
-
+        echo $str;
+        echo '<pre>';
         $sign = strtoupper(md5($str . $key));
-
-        $params['sign'] = $sign;
-        echo '/r/n';
         echo $sign;exit;
+        $params['sign'] = $sign;
+
         //数组转xml
         function ArrToXml($arr)
         {
