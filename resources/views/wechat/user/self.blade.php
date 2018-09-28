@@ -29,7 +29,7 @@
                     <?php echo '律师'?>
                     @endif
             </span></p>
-        <input type="button" value="充值" id="Recharge">  <input type="button" value="提现">  余额：<span>{{$user_info -> balance}}</span>
+        <input type="button" value="充值" id="Recharge">  <input type="button" value="提现" id="forward">  余额：<span>{{$user_info -> balance}}</span>
     </div>
 
 
@@ -41,6 +41,12 @@
     //充值
     $('#Recharge').on('click' , function(){
         window.location.href="/Code";
+    })
+
+    //提现
+    $('#forward').on('click' ,function(){
+        alert(123)
+        window.location.href="/forward";
     })
 
     $(function(){
