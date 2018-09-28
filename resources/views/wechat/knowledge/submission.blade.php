@@ -21,7 +21,7 @@
 <form action="/knowledge-submission-do" method="post">
     @csrf
 <div class="ask_art_tle"><input type="text" name="k_title" placeholder ="标题"></div>
-        <select>
+        <select name="t_id">
             <option value="" >请选择类型</option>
             @foreach($data as $v)
                 <option value="{{$v->t_id}}">{{$v->t_name}}</option>
