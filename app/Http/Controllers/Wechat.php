@@ -372,7 +372,7 @@ class Wechat extends Controller{
 
                     DB::table('recharge') -> where(['r_id' => $orderinfo -> data_id]) -> update(['r_status' => 1]);
 
-                    DB::table('user') -> where(['u_id' => $orderinfo -> u_id]) -> increment('balance' , $arr['total_fee']);
+                    DB::table('user') -> where(['u_id' => $orderinfo -> u_id]) -> increment('balance' , $arr['total_fee'] /100);
 
                     $res = DB::table('order') -> where(['order_num' => $arr['out_trade_no']]) -> update($order_data);
 
