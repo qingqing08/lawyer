@@ -131,4 +131,16 @@ class User extends Controller{
 
     }
 
+    /**
+     *  提现
+     */
+    public function forward(){
+
+        $openid = session::get('openid');
+
+        $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
+
+        return view('wechat.user.forward' , ['balance' => $user_info -> balance]);
+    }
+
 }
