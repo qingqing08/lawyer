@@ -23,7 +23,7 @@
     </div>
 
     <div style="text-align: center;margin-top: 40px">
-        请输入提现金额: <input type="text" width="30px;" id="money">
+        请输入提现金额: <input type="text" width="30px;" id="money" placeholder="可提现{{$balance}}">
     </div>
 
     <div style="text-align: center;margin-top: 50px;">
@@ -38,7 +38,9 @@
         var mode = $('#mode').val();
         var money = $('#money').val();
         var balance = $('#blance').val()
-
+        alert(mode)
+        alert(money)
+        alert(balance)
         if(money > balance){
             alert('提现金额不能大于余额');
         }
