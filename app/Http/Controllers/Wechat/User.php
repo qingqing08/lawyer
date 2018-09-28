@@ -143,4 +143,122 @@ class User extends Controller{
         return view('wechat.user.forward' , ['balance' => $user_info -> balance]);
     }
 
+    /**
+     *  提现到微信
+     */
+    public function wechat(Request $request){
+
+        $money = $request -> get('money') * 100;
+        $openid = session :: get('openid');
+        $key = 'sdg634fghgu5654rtghfghgfy4575htg';
+        $order_id = data('YmdHis').rand(000000 , 999999);
+
+        $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
+
+        //添加forward表
+        $forward = [
+            'u_id' => $user_info -> u_id,
+            'f_money' => $money /100 ,
+            'f_type' => 1,
+            'f_time' => time()
+        ];
+        $id = DB::table('forward') -> insertGetId($forward);
+
+        //添加order表
+        $order = [
+            'u_id' => $user_info -> u_id,
+            'data_id' => $id,
+            'order_num' => $order_id,
+            'o_content' => '提现',
+            'o_price' => $money / 100,
+            'o_type' => '3',
+            'o_ctime' => time()
+        ];
+
+        DB::table('order') -> insert($order);
+
+        $params = [
+            'mch_appid' => 'wx3d751ea7a2f7c064',
+            'mchid' => '1499304962' ,
+            'nonce_str' => md5(time()),
+            'partner_trade_no' => $order_id,
+            'openid' => $openid ,
+            'check_name' => 'NO_CHECK',
+            'amount' => $money,
+            'desc' => '提现',
+            'spbill_create_ip' => $_SERVER['REMOTE_ADDR']
+        ];
+
+        //去除数组的空值
+        array_filter($params);
+        if(isset($params['sign'])){
+            unset($params['sign']);
+        }
+        //排序
+        ksort($params);
+
+        //组装字符
+        $str = urldecode(http_build_query($params));
+
+        $sign = strtoupper(md5($str . $key));
+
+        $params['sign'] = $sign;
+
+        //数组转xml
+        function ArrToXml($arr)
+        {
+            if(!is_array($arr) || count($arr) == 0) return '';
+
+            $xml = "<xml>";
+            foreach ($arr as $key=>$val)
+            {
+                if (is_numeric($val)){
+                    $xml.="<".$key.">".$val."</".$key.">";
+                }else{
+                    $xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
+                }
+            }
+            $xml.="</xml>";
+            return $xml;
+        }
+
+        $xml = ArrToXml($params);
+
+        //post 发送数据
+        function curlRequest($url,$data = ''){
+            $ch = curl_init();
+            $params[CURLOPT_URL] = $url;    //请求url地址
+            $params[CURLOPT_HEADER] = false; //是否返回响应头信息
+            $params[CURLOPT_RETURNTRANSFER] = true; //是否将结果返回
+            $params[CURLOPT_FOLLOWLOCATION] = true; //是否重定向
+            $params[CURLOPT_TIMEOUT] = 30; //超时时间
+            if(!empty($data)){
+                $params[CURLOPT_POST] = true;
+                $params[CURLOPT_POSTFIELDS] = $data;
+            }
+            $params[CURLOPT_SSL_VERIFYPEER] = false;//请求https时设置,还有其他解决方案
+            $params[CURLOPT_SSL_VERIFYHOST] = false;//请求https时,其他方案查看其他博文
+            curl_setopt_array($ch, $params); //传入curl参数
+            $content = curl_exec($ch); //执行
+            curl_close($ch); //关闭连接
+            return $content;
+        }
+        $url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers";
+
+        $comtent = curlRequest($url , $xml);
+
+        //将结果转化为数组
+        function XmlToArr($xml)
+        {
+            if($xml == '') return '';
+            libxml_disable_entity_loader(true);
+            $arr = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
+            return $arr;
+        }
+        $arr = XmlToArr($comtent);
+
+        file_get_contents('forward.log' , print_r($arr , true) , FILE_APPEND);
+        
+    }
+
 }
