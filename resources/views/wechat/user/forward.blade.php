@@ -23,7 +23,7 @@
     </div>
 
     <div style="text-align: center;margin-top: 40px">
-        请输入提现金额: <input type="text" width="30px;" id="money" placeholder="可提现{{$balance}}">
+        请输入提现金额: <input type="number" width="30px;" id="money" placeholder="最大可提现{{$balance}}">
     </div>
 
     <div style="text-align: center;margin-top: 50px;">

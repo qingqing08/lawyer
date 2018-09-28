@@ -151,7 +151,7 @@ class User extends Controller{
         $money = $request -> get('money') * 100;
         $openid = session :: get('openid');
         $key = 'sdg634fghgu5654rtghfghgfy4575htg';
-        $order_id = data('YmdHis').rand(000000 , 999999);
+        $order_id = date('YmdHis').rand(000000 , 999999);
 
         $user_info = DB::table('user') -> where(['wx_openid' => $openid]) -> first();
 
@@ -258,7 +258,7 @@ class User extends Controller{
         $arr = XmlToArr($comtent);
 
         file_get_contents('forward.log' , print_r($arr , true) , FILE_APPEND);
-        
+
     }
 
 }
