@@ -114,6 +114,12 @@ class Question extends Controller{
             $comment->u_id = $user->wx_name;
             $comment->headimg = $user->wx_headeimg;
             $comment->c_ctime = date("Y-m-d H:i:s" , $comment->c_ctime);
+            $thread_list = DB::table('thread')->where('c_id' , $comment->c_id)->get();
+            foreach ($thread_list as $thread){
+                $userinfo = DB::table('user')->where('u_id' , $thread->u_id)->first();
+                $thread->u_id = $userinfo->wx_name;
+            }
+            $comment->thread_list = $thread_list;
         }
         $question_info->comment_list = $comment_list;
 //        dd($question_info);
@@ -124,11 +130,38 @@ class Question extends Controller{
         $data = Input::post();
 
         $openid = Session::get('openid');
+//        $openid = "owRHY1cti1oJT7ZfEgzXNbTyJPEo";
         $user_info = DB::table('user')->where('wx_openid' , $openid)->first();
         $data['u_id'] = $user_info->u_id;
 
         unset($data['_token']);
 
-        dd($data);
+        $data['c_ctime'] = time();
+
+        $result = DB::table('comment')->insert($data);
+        if ($result){
+            return ['code'=>1 , 'msg'=>'评论成功'];
+        } else {
+            return ['code'=>2 , 'msg'=>'评论失败'];
+        }
+    }
+
+    public function thread_do(){
+        $data = Input::post();
+
+        unset($data['_token']);
+        $openid = Session::get('openid');
+//        $openid = "owRHY1cti1oJT7ZfEgzXNbTyJPEo";
+        $user_info = DB::table('user')->where('wx_openid' , $openid)->first();
+        $data['u_id'] = $user_info->u_id;
+
+        $data['t_ctime'] = time();
+
+        $result = DB::table('thread')->insert($data);
+        if ($result){
+            return ['code'=>1 , 'msg'=>'跟帖成功'];
+        } else {
+            return ['code'=>2 , 'msg'=>'跟帖失败'];
+        }
     }
 }
