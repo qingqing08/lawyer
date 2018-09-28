@@ -37,10 +37,8 @@
 
         var mode = $('#mode').val();
         var money = $('#money').val();
-        var balance = $('#blance').val()
-        alert(mode)
-        alert(money)
-        alert(balance)
+        var balance = $('#balance').val()
+
         if(money > balance){
             alert('提现金额不能大于余额');
         }
