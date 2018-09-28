@@ -183,7 +183,7 @@ class User extends Controller{
             'mchid' => '1499304962' ,
             'nonce_str' => md5(time()),
             'partner_trade_no' => $order_id,
-            'openid' => $openid ,
+            'openid' => 'wx3d751ea7a2f7c064',
             'check_name' => 'NO_CHECK',
             'amount' => $money,
             'desc' => '提现',
@@ -204,7 +204,7 @@ class User extends Controller{
         $stringA = urldecode(http_build_query($params));
 
         $stringSignTemp = $stringA . '&key=' . $key;
-        
+
         $sign = strtoupper(md5($stringSignTemp));
 
         $params['sign'] = $sign;
