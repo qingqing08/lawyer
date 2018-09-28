@@ -41,5 +41,13 @@
         if(money > "{{$balance}}"){
             alert('提现金额不能大于余额');
         }
+
+        if(mode == 1){
+            window.location.href="/wechat?money=" + money;
+        }else if(mode == 2){
+            window.location.href="/bankCard?money=" + money;
+        }else{
+            window.location.href="/alipay?money=" + money;
+        }
     })
 </script>

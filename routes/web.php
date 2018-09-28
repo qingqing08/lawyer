@@ -126,7 +126,6 @@ Route::get('/admin/integral-list' , 'Admin\Integral@integral_list');
 Route::get('/hotspot-list' , 'Wechat\Hotspot@hotspot_list');
 Route::any('/hotspot-view' , 'Wechat\Hotspot@hotspot_view');
 Route::any('/hotspot-comment' , 'Wechat\Hotspot@hotspot_comment');
-Route::any('/hotspot-thread' , 'Wechat\Hotspot@hotspot_thread');
 /* 找律师 */
 Route::get('/find-lawyer' , 'Wechat\Lawyer@find_lawyer');
 
@@ -141,6 +140,13 @@ Route::get('/generateCode' , 'Wechat\User@generateCode');
 
 /*  提现  */
 Route::get('/forward' , 'Wechat\User@forward');
+/*  提现到微信*/
+Route::get('/wechat' , 'Wechat\User@wechat');
+/*  提现到银行卡*/
+Route::get('/bankCard' , 'Wechat\User@bankCard');
+/*  提现到支付宝*/
+Route::get('/alipay' , 'Wechat\User@alipay');
+
 /* 法律常识 */
 Route::get('/knowledge-list' , 'Wechat\Knowledge@knowledge_list');
 //常识列表
