@@ -18,7 +18,7 @@
     </ul>
     <h1 class="sub_title">法规正文</h1>
 </header>
-<form action="/knowledge-" method="post">
+<form action="/knowledge_submission_do" method="post">
 <div class="ask_art_tle"><input type="text" name="k_title" placeholder ="标题"></div>
         <select>
             <option value="" >请选择类型</option>
@@ -51,6 +51,7 @@
     </div>
     </p>
 </div>
+    <input type="submit" value="提交">
     </form>
 <div class="search_bar fl_form">
     <form method="post" action="http://m.findlaw.cn/?m=fagui&a=search">
