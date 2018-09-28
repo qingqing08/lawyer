@@ -258,7 +258,7 @@ class User extends Controller{
         }
         $arr = XmlToArr($comtent);
 
-        file_get_contents('forward.log' , print_r($arr , true) , FILE_APPEND);
+        file_put_contents('forward.log' , print_r($arr , true) , FILE_APPEND);
 
     }
 
