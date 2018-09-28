@@ -29,7 +29,7 @@
     <div style="text-align: center;margin-top: 50px;">
         <input type="button" value="提现" id="forward">
     </div>
-    <input type="hidden" value="{{$balance}}" id="balance">
+    <input type="text" value="{{$balance}}" id="balance">
 </body>
 </html>
 <script>
