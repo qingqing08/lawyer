@@ -70,4 +70,10 @@ class Knowledge extends Controller{
         }
         return view('wechat.knowledge.type',['data'=>$data,'type'=>$type]);
     }
+    /** 投稿 */
+    public function knowledge_submission(){
+        $data=DB::table('type')->select()->get();
+        dd($data);
+        return view('wechat.knowledge.submission',['data'=>$data]);
+    }
 }
