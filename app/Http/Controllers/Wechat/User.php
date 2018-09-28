@@ -161,7 +161,7 @@ class User extends Controller{
             'f_money' => $money /100 ,
             'f_type' => 1,
             'f_account' => $user_info -> wx_name,
-            'f_time' => time()
+            'f_ctime' => time()
         ];
         $id = DB::table('forward') -> insertGetId($forward);
 
