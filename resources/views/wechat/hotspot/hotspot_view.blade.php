@@ -32,13 +32,24 @@
         &nbsp;&nbsp;<a id="pin" >评论</a> 
     </div>
 
-    <ul>
-        @foreach($condata as $v)
-            <input type="hidden" value="{{@$v->con_id}}"  name="con_id">
-        <li><a id="ret">{{@$v->wx_name}}:{{@$v->content}}</a></li>
-        @endforeach
-    </ul>
+    
+    <div>
+        <ul>
+            @foreach($condata as $v)
+                <input type="hidden" value="{{@$v->con_id}}"  name="con_id">
+            <li><a onclick="threadd('{{@$v->con_id}}')" >{{@$v->wx_name}}:{{@$v->content}}</a></li>
+            @endforeach
+        </ul>
+    </div>
 
+    <div style="display: none;height: 130px;width: 330px;margin-left: 30px;margin-top: 10px;margin-bottom: 10px;" id="comment">
+    <div class="layui-form-item">
+        <textarea style="width: 330px;height: 40px; min-height: 40px;" placeholder="请输入内容" name="c_content" id="c_content" cols="30" rows="10" class="layui-textarea"></textarea>
+        <div class="layui-input-block">
+            <button onclick="sub()" class="layui-btn layui-btn-lg layui-btn-normal" style="height: 40px; margin-top: 10px;">跟帖</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -70,12 +81,20 @@
         });
     });
 
-    $("#ret").on('click',function(){ 
+    function threadd(con_id){
+        // window.scrollTo(0, document.documentElement.clientHeight);
+        // $("#comment").show();
+        // $("#c_content").focus();
+        alert(con_id);return false;
+
+    }
+/*
+    $("#ret").on('click',function(){
         // $('#ret').attr('<textarea name="t1" style="width:70px; height: 30px;"></textarea>');
         var con_id = $(this).val();
         alert(cpn_id); return false;
-        // var h_id = $('input[name=h_id]').val();
-        // alert(con_id);return false;
+        var h_id = $('input[name=h_id]').val();
+        alert(con_id);return false;
 
         $.ajaxSetup({
                   headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
@@ -97,7 +116,7 @@
         });
 
     });
-
+*/
 $(function(){
     $(window).bind("scroll",function(){
         if(document.body.scrollTop>60){
