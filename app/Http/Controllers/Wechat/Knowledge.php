@@ -82,7 +82,7 @@ class Knowledge extends Controller{
         $post['k_ctime']=time();
         $res=DB::table('knowledge')->insert($post);
         if($res){
-            header('refresh:2;href="/knowledge-list"');
+            return redirect('/knowledge-list');
         }
     }
 }
