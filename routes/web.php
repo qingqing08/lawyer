@@ -147,7 +147,7 @@ Route::get('/knowledge-view' , 'Wechat\Knowledge@knowledge_view');
 //常识的查询
 Route::post('/knowledge-vague' , 'Wechat\Knowledge@knowledge_vague');
 //投稿
-Route::get('/knowledge-submission','Wechat\knowledge@knowledge_submission');
+Route::get('/knowledge-submission','Wechat\Knowledge@knowledge_submission');
 /* 发布悬赏问题 */
 //问题列表
 Route::get('/question-list' , 'Wechat\Question@question_list');
