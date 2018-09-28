@@ -20,11 +20,11 @@
 </header>
 <form action="/knowledge-" method="post">
 <div class="ask_art_tle"><input type="text" name="k_title"></div>
-        <sselect>
+        <select>
             @foreach($data as $v)
                 <option value="{{$v->t_id}}">{{$v->t_name}}</option>
             @endforeach
-        </sselect>
+        </select>
 <div class="ask_art_box">
     <div class="fagui_text">
         <textarea name="k_content"></textarea>
