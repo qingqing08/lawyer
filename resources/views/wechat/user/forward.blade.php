@@ -19,7 +19,7 @@
     </div>
 
     <div style="text-align: center;margin-top: 10px;">
-        <h5><p style="color:red;">*</p>注意提现金额不能大于余额</h5>
+        <p><span style="color:red;">*</span>注意提现金额不能大于余额</p>
     </div>
 
     <div style="text-align: center;margin-top: 40px">
