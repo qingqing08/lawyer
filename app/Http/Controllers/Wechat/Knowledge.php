@@ -76,4 +76,8 @@ class Knowledge extends Controller{
 //        dd($data);
         return view('wechat.knowledge.submission',['data'=>$data]);
     }
+    public function knowledge_submission_do(){
+        $post=Input::post();
+        dd($post);
+    }
 }
