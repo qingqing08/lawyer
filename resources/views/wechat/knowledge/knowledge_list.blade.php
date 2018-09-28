@@ -49,7 +49,7 @@
     </div>
     <div class="footer_nav">
         <a href="../default.htm">首页</a>
-        <a href="javascript:;" id="tougao">投稿</a>
+        <a href="/knowledge-submission">投稿</a>
         <a href="../lawyer">找律师</a>
         <a href="../fagui">查法规</a>
     </div>
@@ -58,12 +58,11 @@
 </body>
 </html>
 <script type="text/javascript">
-    {{--$("#tougao").on('click' , function(){--}}
-        {{--if(money != ''){--}}
-            {{--$('h3').html('请使用微信扫描二维码')--}}
-            {{--$('img').attr('src' , 'http://pengqq.jebt.top/generateCode?order_id={{$order_id}}&money='+ money)--}}
-
-        {{--}--}}
+    $("#tougao").on('click' , function(){
+        if(money != ''){
+            $('h3').html('请使用微信扫描二维码')
+            $('img').attr('src' , 'http://pengqq.jebt.top/generateCode?order_id={{$order_id}}&money='+ money)
+        }
 
     $('input[type=submit]').click(function(){
         var token = $("input[name=_token]").val();
