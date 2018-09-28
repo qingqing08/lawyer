@@ -148,6 +148,8 @@ Route::get('/knowledge-view' , 'Wechat\Knowledge@knowledge_view');
 Route::post('/knowledge-vague' , 'Wechat\Knowledge@knowledge_vague');
 //投稿
 Route::get('/knowledge-submission','Wechat\Knowledge@knowledge_submission');
+Route::get('/knowledge-submission-do','Wechat\Knowledge@knowledge_submission_do');
+
 /* 发布悬赏问题 */
 //问题列表
 Route::get('/question-list' , 'Wechat\Question@question_list');

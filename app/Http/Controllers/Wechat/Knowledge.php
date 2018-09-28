@@ -73,7 +73,7 @@ class Knowledge extends Controller{
     /** 投稿 */
     public function knowledge_submission(){
         $data=DB::table('type')->select()->get();
-        dd($data);
-//        return view('wechat.knowledge.submission',['data'=>$data]);
+//        dd($data);
+        return view('wechat.knowledge.submission',['data'=>$data]);
     }
 }
