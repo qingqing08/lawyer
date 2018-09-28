@@ -6,6 +6,7 @@
         font-size: 30px;
     }
 </style>
+<title>问题列表</title>
 <link rel="stylesheet" href="/lib/layui/css/layui.css">
 @foreach($question_list as $question)
 <div style="height: 150px;width: 100%;">

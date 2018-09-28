@@ -140,6 +140,19 @@ class Question extends Controller{
 
         $result = DB::table('comment')->insert($data);
         if ($result){
+            $integral_data = [
+                'u_id'  =>  $user_info->u_id,
+                'i_content' =>  "评论悬赏问题",
+                'score' =>  1,
+                'i_ctime'   =>  time(),
+            ];
+            $res = DB::table('integral_info')->insert($integral_data);
+            if ($res){
+                $userdata = [
+                    'integral'  =>  $user_info->integral+1,
+                ];
+                DB::table('user')->where('u_id' , $user_info->u_id)->update($userdata);
+            }
             return ['code'=>1 , 'msg'=>'评论成功'];
         } else {
             return ['code'=>2 , 'msg'=>'评论失败'];

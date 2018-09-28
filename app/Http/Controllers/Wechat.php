@@ -151,6 +151,12 @@ class Wechat extends Controller{
                             'url'   =>  'http://pengqq.jebt.top/knowledge-list',
 //                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/legal-knowledge?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                         ],
+                        [
+                            'type'  =>  'view',
+                            'name'  =>  '发布悬赏问题',
+                            'url'   =>  'http://pengqq.jebt.top/question-list',
+//                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/legal-knowledge?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
+                        ],
                     ]
                 ],
                 [
