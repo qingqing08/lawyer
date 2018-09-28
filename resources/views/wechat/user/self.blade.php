@@ -45,7 +45,7 @@
 
     //提现
     $('#forward').on('click' ,function(){
-        alert(123)
+        
         window.location.href="/forward";
     })
 

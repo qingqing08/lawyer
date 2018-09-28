@@ -15,12 +15,18 @@
                         <option value="2">银行卡</option>
                         <option value="3">支付宝</option>
                    </select>
-                   <h5><p style="color:red;">*</p>注意提现金额不能大于余额</h5>
+
     </div>
+
+    <div style="text-align: center;margin-top: 10px;">
+        <h5><p style="color:red;">*</p>注意提现金额不能大于余额</h5>
+    </div>
+
     <div style="text-align: center;margin-top: 40px">
         请输入提现金额: <input type="text" width="30px;" id="money">
     </div>
-    <div>
+
+    <div style="text-align: center;margin-top: 50px;">
         <input type="button" value="提现" id="forward">
     </div>
     <input type="hidden" value="{{$balance}}" id="balance">
@@ -28,7 +34,7 @@
 </html>
 <script>
     $('#forward').on('click' , function(){
-        
+
         var mode = $('#mode').val();
         var money = $('#money').val();
         var balance = $('#blance').val()
