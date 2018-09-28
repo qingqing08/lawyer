@@ -183,7 +183,7 @@ class User extends Controller{
             'mchid' => '1499304962' ,
             'nonce_str' => md5(time()),
             'partner_trade_no' => $order_id,
-            'openid' => 'wx3d751ea7a2f7c064',
+            'openid' => 'ooz740W33bwlhiNviuFzmmHwctOc',
             'check_name' => 'NO_CHECK',
             'amount' => $money,
             'desc' => '提现',
