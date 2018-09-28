@@ -202,9 +202,9 @@ class User extends Controller{
         dump($params);
         //组装字符
         $str = urldecode(http_build_query($params));
-        echo $str;
+        echo $str . $key;
         echo '<pre>';
-        $sign = strtoupper(md5($str . $key));
+        $sign = md5($str . $key);
         echo $sign;exit;
         $params['sign'] = $sign;
 
