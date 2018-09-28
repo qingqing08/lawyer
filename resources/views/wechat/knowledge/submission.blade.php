@@ -27,6 +27,7 @@
                 <option value="{{$v->t_id}}">{{$v->t_name}}</option>
             @endforeach
         </select>
+    <input type="text" placeholder="来源" name="k_from">
 <div class="ask_art_box">
     <div class="fagui_text">
         <textarea name="k_content" placeholder ="内容"></textarea>

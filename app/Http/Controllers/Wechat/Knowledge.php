@@ -78,6 +78,11 @@ class Knowledge extends Controller{
     }
     public function knowledge_submission_do(){
         $post=Input::post();
-        dd($post);
+        unset($post['_token']);
+        $post['k_ctime']=time();
+        $res=DB::table('knowledge')->insert($post);
+        if($res){
+            header('refresh:2;href="/knowledge-list"');
+        }
     }
 }
