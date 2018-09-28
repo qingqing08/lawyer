@@ -71,6 +71,7 @@
     });
 
     $("#ret").on('click',function(){ 
+        $('#ret').attr('<textarea name="t1" style="width:70px; height: 30px;"></textarea>');
         var con_id = $('input[name=con_id]').val();
         alert(con_id);return false;
 

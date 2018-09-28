@@ -51,6 +51,9 @@ class Hotspot extends Controller{
         $openid = Session::get('openid');
         //评论内容
         $content = input::post('content');
+        // if(empty($cntent)){
+        //     return[]
+        // }
         //热点id
         $h_id = input::post('h_id');
 
