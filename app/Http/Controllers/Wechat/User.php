@@ -201,11 +201,11 @@ class User extends Controller{
         }
         dump($params);
         //组装字符
-        $str = urldecode(http_build_query($params));
-        
-        $sign = md5($str . '&key='.$key);
-        echo $sign;exit;
-        $params['sign'] = $sign;
+        $stringA = urldecode(http_build_query($params));
+
+        $stringSignTemp = $stringA . '&key=' . $key;
+
+        echo $stringSignTemp;exit;
 
         //数组转xml
         function ArrToXml($arr)
