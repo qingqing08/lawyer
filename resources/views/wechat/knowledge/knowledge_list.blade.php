@@ -39,7 +39,6 @@
         <input class="txt_ipt mr10" type="text" name="keyword"/><input class="btn" value="搜法规" type="submit" />
     </form>
     <input type="button" id="tougao" value="投稿">
-    <img src="" alt=""  width="300px;" height="300px;>
 </div>
 <a class="tips_box" href="../tel_3A400-676-8333"><div class="tips_inbox"><span class="tips_tel">400-676-8333</span><span class="tips_inbox-text">点击免费咨询律师</span></div></a>
 <footer class="f16 tc c666">
@@ -59,12 +58,12 @@
 </body>
 </html>
 <script type="text/javascript">
-    $("#tougao").on('click' , function(){
-        if(money != ''){
-            $('h3').html('请使用微信扫描二维码')
-            $('img').attr('src' , 'http://pengqq.jebt.top/generateCode?order_id={{$order_id}}&money='+ money)
+    {{--$("#tougao").on('click' , function(){--}}
+        {{--if(money != ''){--}}
+            {{--$('h3').html('请使用微信扫描二维码')--}}
+            {{--$('img').attr('src' , 'http://pengqq.jebt.top/generateCode?order_id={{$order_id}}&money='+ money)--}}
 
-        }
+        {{--}--}}
 
     $('input[type=submit]').click(function(){
         var token = $("input[name=_token]").val();
