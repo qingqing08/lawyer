@@ -71,16 +71,18 @@
     });
 
     $("#ret").on('click',function(){ 
-        $('#ret').attr('<textarea name="t1" style="width:70px; height: 30px;"></textarea>');
-        var con_id = $('input[name=con_id]').val();
-        alert(con_id);return false;
+        // $('#ret').attr('<textarea name="t1" style="width:70px; height: 30px;"></textarea>');
+        var con_id = $(this).val();
+        alert(cpn_id); return false;
+        // var h_id = $('input[name=h_id]').val();
+        // alert(con_id);return false;
 
         $.ajaxSetup({
                   headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
               });
 
         $.ajax({
-                url:"hotspot-comment",
+                url:"hotspot-thread",
                 type:"post",
                 dataType:"json",
                 data:{content:content,h_id:h_id},
