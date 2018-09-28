@@ -18,9 +18,10 @@
     </ul>
     <h1 class="sub_title">法规正文</h1>
 </header>
-<form action="/knowledge-" method="post">
+<form action="/knowledge-submission-do" method="post">
+    @csrf
 <div class="ask_art_tle"><input type="text" name="k_title" placeholder ="标题"></div>
-        <select>
+        <select name="t_id">
             <option value="" >请选择类型</option>
             @foreach($data as $v)
                 <option value="{{$v->t_id}}">{{$v->t_name}}</option>
@@ -51,6 +52,7 @@
     </div>
     </p>
 </div>
+    <input type="submit" value="提交">
     </form>
 <div class="search_bar fl_form">
     <form method="post" action="http://m.findlaw.cn/?m=fagui&a=search">

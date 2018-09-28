@@ -189,7 +189,7 @@ class User extends Controller{
             'desc' => '提现',
             'spbill_create_ip' => $_SERVER['REMOTE_ADDR']
         ];
-        dd($params);
+        print_r($params);
         //去除数组的空值
         array_filter($params);
         if(isset($params['sign'])){
@@ -204,7 +204,8 @@ class User extends Controller{
         $sign = strtoupper(md5($str . $key));
 
         $params['sign'] = $sign;
-
+        echo '/r/n';
+        echo $sign;exit;
         //数组转xml
         function ArrToXml($arr)
         {
