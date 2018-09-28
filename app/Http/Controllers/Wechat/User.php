@@ -204,7 +204,7 @@ class User extends Controller{
         $str = urldecode(http_build_query($params));
         echo $str . $key;
         echo '<pre>';
-        $sign = md5($str . $key);
+        $sign = md5($str . '&key='.$key);
         echo $sign;exit;
         $params['sign'] = $sign;
 
