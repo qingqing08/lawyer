@@ -19,15 +19,16 @@
     <h1 class="sub_title">法规正文</h1>
 </header>
 <form action="/knowledge-" method="post">
-<div class="ask_art_tle"><input type="text" name="k_title"></div>
+<div class="ask_art_tle"><input type="text" name="k_title" pleaseholder ="标题"></div>
         <select>
+            <option value="" >请选择类型</option>
             @foreach($data as $v)
                 <option value="{{$v->t_id}}">{{$v->t_name}}</option>
             @endforeach
         </select>
 <div class="ask_art_box">
     <div class="fagui_text">
-        <textarea name="k_content"></textarea>
+        <textarea name="k_content" pleaseholder ="内容"></textarea>
     </div>
     <p class="ask_name">
     <div class="fr">
