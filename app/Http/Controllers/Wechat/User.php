@@ -268,6 +268,22 @@ class User extends Controller{
 
         file_put_contents('forward.log' , print_r($arr , true) , FILE_APPEND);
 
+        if($arr['return_code'] == 'SUCCESS' && $arr['result_code'] == 'SUCCESS'){
+
+            $res = DB::table('order') -> where(['order_num' => $arr['partner_trade_no']]) -> update(['o_status' => 2 , 'o_paystatus' => 1]);
+
+            $order_info = DB::table('order')-> where(['order_num' => $arr['partner_trade_no']]) -> first();
+
+            DB::table('forward') -> where(['f_id' => $order_info -> data_id]) -> update(['f_status' => 1]);
+
+            $openid = session::get('openid');
+
+            $result = DB::table('user') -> where(['wx_openid' => $openid]) -> decrement('balance' , $money /100);
+
+            if($res && $result){
+                header("refresh:1;url=/self");
+            }
+        }
     }
 
 }
