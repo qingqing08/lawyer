@@ -46,6 +46,7 @@
     <div class="layui-form-item">
         <textarea style="width: 330px;height: 40px; min-height: 40px;" placeholder="请输入内容" name="c_content" id="c_content" cols="30" rows="10" class="layui-textarea"></textarea>
         <div class="layui-input-block">
+            <input type="hidden" value="" id="c_id">
             <button onclick="sub()" class="layui-btn layui-btn-lg layui-btn-normal" style="height: 40px; margin-top: 10px;">跟帖</button>
         </div>
     </div>
@@ -82,10 +83,10 @@
     });
 
     function threadd(con_id){
-        // window.scrollTo(0, document.documentElement.clientHeight);
-        // $("#comment").show();
-        // $("#c_content").focus();
-        alert(con_id);return false;
+        window.scrollTo(0, document.documentElement.clientHeight);
+        $("#comment").show();
+        $("#c_content").focus();
+        // alert(con_id);return false;
 
     }
 /*

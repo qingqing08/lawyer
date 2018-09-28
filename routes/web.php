@@ -126,6 +126,8 @@ Route::get('/admin/integral-list' , 'Admin\Integral@integral_list');
 Route::get('/hotspot-list' , 'Wechat\Hotspot@hotspot_list');
 Route::any('/hotspot-view' , 'Wechat\Hotspot@hotspot_view');
 Route::any('/hotspot-comment' , 'Wechat\Hotspot@hotspot_comment');
+Route::any('/hotspotthread' , 'Wechat\Hotspot@hotspot_thread');
+
 /* 找律师 */
 Route::get('/find-lawyer' , 'Wechat\Lawyer@find_lawyer');
 
