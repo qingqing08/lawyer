@@ -173,3 +173,14 @@ Route::get('/bankCard' , 'Wechat\User@bankCard');
 
 /*提现到支付宝*/
 Route::get('/alipay' , 'Wechat\User@alipay');
+
+//二维码
+Route::get('qrcode' , 'Wechat@qrcode');
+Route::get('submission' , 'Wechat\Knowledge@submission');
+Route::post('is-login' , 'Wechat\Knowledge@is_login');
+
+//考试---显示二维码
+Route::get('show' , 'Qrcode@show');
+Route::get('unlock' , 'Qrcode@unlock');
+Route::post('status' , 'Qrcode@status');
+Route::get('close-lock' , 'Qrcode@close_lock');

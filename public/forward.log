@@ -18,3 +18,93 @@ Array
     [err_code] => SIGN_ERROR
     [err_code_des] => 签名错误
 )
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => openid与商户appid不匹配
+    [mch_appid] => wx3d751ea7a2f7c064
+    [mchid] => 1499304962
+    [result_code] => FAIL
+    [err_code] => OPENID_ERROR
+    [err_code_des] => openid与商户appid不匹配
+)
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => 参数错误:openid字段不正确,请检查是否合法
+    [mch_appid] => wx3d751ea7a2f7c064
+    [mchid] => 1499304962
+    [result_code] => FAIL
+    [err_code] => PARAM_ERROR
+    [err_code_des] => 参数错误:openid输入有误
+)
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => 支付失败
+    [mch_appid] => wx3d751ea7a2f7c064
+    [mchid] => 1499304962
+    [result_code] => FAIL
+    [err_code] => AMOUNT_LIMIT
+    [err_code_des] => 付款金额超出限制。低于最小金额0.30元或累计超过20000.00元。
+)
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => Array
+        (
+        )
+
+    [mch_appid] => wx3d751ea7a2f7c064
+    [mchid] => 1499304962
+    [nonce_str] => b428fcec6a1a5ed53dff8becbcc7d6ce
+    [result_code] => SUCCESS
+    [partner_trade_no] => 20180928164528424081
+    [payment_no] => 1000018301201809282254382970
+    [payment_time] => 2018-09-28 16:45:29
+)
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => Array
+        (
+        )
+
+    [mch_appid] => wx3d751ea7a2f7c064
+    [mchid] => 1499304962
+    [nonce_str] => c469cb1c1d6eeff8014d35f76d0fbedc
+    [result_code] => SUCCESS
+    [partner_trade_no] => 2018092817102419932
+    [payment_no] => 1000018301201809282343795988
+    [payment_time] => 2018-09-28 17:10:25
+)
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => Array
+        (
+        )
+
+    [mch_appid] => wx3d751ea7a2f7c064
+    [mchid] => 1499304962
+    [nonce_str] => 595850aa53319c6029b18503f95c539c
+    [result_code] => SUCCESS
+    [partner_trade_no] => 20180928171435749487
+    [payment_no] => 1000018301201809282255958917
+    [payment_time] => 2018-09-28 17:14:36
+)
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => Array
+        (
+        )
+
+    [mch_appid] => wx3d751ea7a2f7c064
+    [mchid] => 1499304962
+    [nonce_str] => f5b117a3df5456c692389c86871b4538
+    [result_code] => SUCCESS
+    [partner_trade_no] => 2018092821165413849
+    [payment_no] => 1000018301201809282257204760
+    [payment_time] => 2018-09-28 21:16:55
+)

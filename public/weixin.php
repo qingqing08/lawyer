@@ -19,21 +19,42 @@
 //        file_put_contents('./weixin.log',$url."\r\n",FILE_APPEND);
 //        header("location:".$url);
     }
+
+    if ($type == "SCAN"){
+        $url = $arr['EventKey'];
+        $url = $url.$arr['FromUserName'];
+
+        file_put_contents(__DIR__.'/saomiao.log',$url."\r\n",FILE_APPEND);
+        $res = file_get_contents($url);
+        file_put_contents(__DIR__.'/saomiao.log',$res."\r\n",FILE_APPEND);
+        $xml_data = [
+            "ToUserName"=>$arr['FromUserName'],
+            "FromUserName"=>$arr['ToUserName'],
+            "CreateTime"=>time(),
+            "MsgType"   =>  "text",
+            "Content"   =>  $res,
+            // "Content"   =>  "你好",
+        ];
+        $return_xml = ArrToXml($xml_data);
+        file_put_contents(__DIR__.'/saomiao.log',$return_xml."\r\n",FILE_APPEND);
+
+        echo $return_xml;
+    }
 //
 //
-//    function ArrToXml($shuzu){
-//        if(!is_array($shuzu) || count($shuzu) == 0) return '';
-//
-//        $xml = "<xml>";
-//        foreach ($shuzu as $key=>$val)
-//        {
-//            if (is_numeric($val)){
-//                $xml.="<".$key.">".$val."</".$key.">";
-//            }else{
-//                $xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
-//            }
-//        }
-//        $xml.="</xml>";
-//        return $xml;
-//    }
+    function ArrToXml($shuzu){
+        if(!is_array($shuzu) || count($shuzu) == 0) return '';
+
+        $xml = "<xml>";
+        foreach ($shuzu as $key=>$val)
+        {
+            if (is_numeric($val)){
+                $xml.="<".$key.">".$val."</".$key.">";
+            }else{
+                $xml.="<".$key."><![CDATA[".$val."]]></".$key.">";
+            }
+        }
+        $xml.="</xml>";
+        return $xml;
+    }
 ?>

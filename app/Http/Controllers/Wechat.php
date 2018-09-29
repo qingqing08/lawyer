@@ -410,4 +410,52 @@ class Wechat extends Controller{
         return $xml;
     }
 
+    /**
+     * 获取ticket
+     */
+    const TICKET_URL = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=';
+    public function get_ticket($i){
+        $tokens = $this->getAccessToken();
+
+        $url = self::TICKET_URL . $tokens;
+        $rand = rand(100000 , 999999);
+        Session::put('code' , $rand);
+        Session::put('num_'.$i , $i);
+        $params = [
+            'action_name'    =>  'QR_LIMIT_STR_SCENE',
+            'action_info'   =>  [
+                'scene' =>  [
+                    'scene_str'  =>  'http://pengqq.jebt.top/unlock?num='.$i.'&code='.$rand.'&openid=',
+                ],
+            ],
+        ];
+
+        $json = json_encode($params,JSON_UNESCAPED_UNICODE);
+        return $this->curlPost($url, $json);
+
+    }
+    const QRCODE_URL = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=';
+    public function qrcode(){
+        for ($i=0;$i<3;$i++){
+            $ticket_json = $this->get_ticket($i);
+
+            $ticket_arr = json_decode($ticket_json , true);
+
+            $ticket = urlencode($ticket_arr['ticket']);
+            $url = self::QRCODE_URL .$ticket;
+            $arr = [
+                'url'   =>  $url,
+                'code'  =>  Session::get('code'),
+                'id'    =>  Session::get('num_'.$i),
+            ];
+
+            $data[$i] = $arr;
+        }
+
+
+
+        return json_encode($data);
+//        header("location:".$url);
+    }
+
 }
