@@ -28,15 +28,28 @@ class Qrcode extends Controller{
         $code_show = DB::table('wx')->where(['code'=>$code,'num'=>$num])->first();
         if (!empty($code_show)){
 //            echo $status;die;
+//            if ($num == 0){
+//                dd($code_show);
+//            }
+
             if ($code_show->status == 0){
-                return ['msg'=>'已开锁' , 'code'=>1];
+//                $price = date("s" , time()) - date("s" , $code_show->ctime);
+                $data['price'] = round($code_show->price+0.2,1);
+
+                DB::table('wx')->where(['code'=>$code , 'num'=>$num])->update($data);
+//                if ($num == 0){
+//                    dd($code_show);
+//                }
+                return ['msg'=>'已开锁' , 'code'=>1 , 'money'=>$data['price']];
+
+
             } elseif($code_show->status == 1){
                 return ['msg'=>'已取消' , 'code'=>2];
             } else {
                 return ['msg'=>'已关锁' , 'code'=>3];
             }
         } else {
-            return ['code'=>2 , 'msg'=>'请使用手机微信扫一扫登录'];
+            return ['code'=>2 , 'msg'=>'请使用手机微信扫一扫解锁'];
         }
     }
 
@@ -87,6 +100,47 @@ class Qrcode extends Controller{
     }
 
     public function close_lock(){
-        dd(Input::get());
+        $code = Input::get('code');
+        $num = Input::get('num');
+
+        $code_show = DB::table('wx')->where(['code'=>$code,'num'=>$num])->first();
+        if (empty($code_show)){
+            echo "无该车辆信息";
+        } else {
+            if ($code_show->status != 0){
+                echo "该车辆不是开锁状态";
+            } else {
+                $data = [
+                    'status'    =>  2,
+                ];
+
+                $result = DB::table('wx')->where(['code'=>$code,'num'=>$num,'status'=>0])->update($data);
+                if ($result){
+                    $user_info = DB::table('user')->where('wx_openid' , $code_show->openid)->first();
+                    $num = $num+1;
+                    $url = "http://pengqq.jebt.top/send-message?openid=".$code_show->openid."&username=".$user_info->wx_name."&bake_num=".$num."&money=".$code_show->price;
+                    file_get_contents($url);
+                    DB::table('wx')->where(['code'=>$code,'num'=>$num-1,'status'=>2])->delete();
+                    echo "<script>window.history.back();</script>";
+                } else {
+                    echo "关锁失败";
+                }
+            }
+        }
+    }
+
+    public function price(){
+        $code = Input::post('code');
+        $num = Input::post('num');
+
+        $show = DB::table('wx')->where(['code'=>$code , 'num'=>$num])->first();
+
+        $price = $show->ctime - time();
+        $data['price'] = $price/10;
+
+        $result = DB::table('wx')->where(['code'=>$code , 'num'=>$num])->update($data);
+        if ($result){
+            return $data['price'];
+        }
     }
 }

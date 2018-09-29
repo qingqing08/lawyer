@@ -4,7 +4,7 @@
     <input type="hidden" name="id_{{ $v['id'] }}" id="id_{{ $v['id'] }}" value="{{$v['id']}}" />
 
     <input type="hidden" name="code_{{ $v['id'] }}" id="code_{{ $v['id'] }}" value="{{$v['code']}}" />
-    <div id="message" style="position: absolute; top: 80px; left: 60px; background-color: #6c757d;"></div>
+    <div id="message_{{ $v['id'] }}" style="position: absolute; top: 80px; left: 60px; background-color: #6c757d;"></div>
 </div>
 @endforeach
 @csrf
@@ -26,74 +26,82 @@
             cache: false,
             success: function (data) {
                 if (data.code == 1) {
+                    setTimeout('status()',2000);
                     var url = 'close-lock?code='+code+'&num='+id;
-                    $('#message').html("<a href='"+url+"'><button>关锁</button></a>");
+                    $('#message_'+id).html("<a href='"+url+"'><button>关锁</button></a><span>1号单车锁已开,当前计费<span>"+data.money+"</span>元</span>");
+
                 } else if (data.code == 3){
                     setTimeout('status()',2000);
-                    $('#message').html('');
+                    $('#message_'+id).html('1号单车未开锁,'+data.msg);
                 }  else {
                     setTimeout('status()',2000);
-                    $('#message').html(data.msg);
+                    $('#message_'+id).html('1号单车未开锁,'+data.msg);
                 }
             }
         })
     }
     status();
     function status2() {
-        var id = $("#id_0").val();
+        var id = $("#id_1").val();
         var code = $("#code_1").val();
-        token = $("input[name=_token]").val();
+        var token = $("input[name=_token]").val();
         $.ajax({
-            url:"status",
-            type:"post",
-            data:{
-                _token:token,
-                order_id:order_id,
-                num:id,
+            url: "status",
+            type: "post",
+            data: {
+                'code': code,
+                '_token': token,
+                'num':id,
             },
             async: false,
             cache: false,
             success: function (data) {
                 if (data.code == 1) {
-                    $('#message').html("<img width='20' height='20' src='./img/duihao.png' /><span style='font-size: 20px;color: red;'>扫码成功</span>");
-                    setTimeout("status('"+data.msg+"')",2000);
-                } else if(data.code == 3){
-                    $('#message').html("<img width='20' height='20' src='./img/duihao.png' /><span style='font-size: 20px;color: red;'>支付成功</span>");
-                    window.location.href="http://www.pengqq.xyz/order";
-                } else {
-                    $('#message').html();
-                    setTimeout("status('"+data.msg+"')",2000);
+                    var url = 'close-lock?code='+code+'&num='+id;
+                    $('#message_'+id).html("<a href='"+url+"'><button>关锁</button></a><span>2号单车锁已开,当前计费<span>"+data.money+"</span>元</span>");
+
+                    setTimeout('status2()',2000);} else if (data.code == 3){
+                    setTimeout('status2()',2000);
+                    $('#message_'+id).html('2号单车未开锁,'+data.msg);
+                }  else {
+                    setTimeout('status2()',2000);
+                    $('#message_'+id).html('2号单车未开锁,'+data.msg);
                 }
             }
         })
     }
 
+    status2();
     function status3() {
-        var id = $("#id_0").val();
+        var id = $("#id_2").val();
         var code = $("#code_2").val();
-        token = $("input[name=_token]").val();
+        var token = $("input[name=_token]").val();
         $.ajax({
-            url:"status",
-            type:"post",
-            data:{
-                _token:token,
-                order_id:order_id,
-                num:id,
+            url: "status",
+            type: "post",
+            data: {
+                'code': code,
+                '_token': token,
+                'num':id,
             },
             async: false,
             cache: false,
             success: function (data) {
                 if (data.code == 1) {
-                    $('#message').html("<img width='20' height='20' src='./img/duihao.png' /><span style='font-size: 20px;color: red;'>扫码成功</span>");
-                    setTimeout("status('"+data.msg+"')",2000);
-                } else if(data.code == 3){
-                    $('#message').html("<img width='20' height='20' src='./img/duihao.png' /><span style='font-size: 20px;color: red;'>支付成功</span>");
-                    window.location.href="http://www.pengqq.xyz/order";
-                } else {
-                    $('#message').html();
-                    setTimeout("status('"+data.msg+"')",2000);
+                    var url = 'close-lock?code='+code+'&num='+id;
+                    $('#message_'+id).html("<a href='"+url+"'><button>关锁</button></a><span>3号单车锁已开,当前计费<span>"+data.money+"</span></span>");
+
+                    setTimeout('status3()',2000);
+                } else if (data.code == 3){
+                    setTimeout('status3()',2000);
+                    $('#message_'+id).html('3号单车未开锁,'+data.msg);
+                }  else {
+                    setTimeout('status3()',2000);
+                    $('#message_'+id).html('3号单车未开锁,'+data.msg);
                 }
             }
         })
     }
+    status3();
+
 </script>

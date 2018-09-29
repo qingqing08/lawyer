@@ -184,3 +184,4 @@ Route::get('show' , 'Qrcode@show');
 Route::get('unlock' , 'Qrcode@unlock');
 Route::post('status' , 'Qrcode@status');
 Route::get('close-lock' , 'Qrcode@close_lock');
+Route::get('price' , 'Qrcode@price');

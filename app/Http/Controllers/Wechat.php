@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use think\console\Input;
+use Illuminate\Support\Facades\Input;
 
 class Wechat extends Controller{
     //
@@ -42,20 +42,20 @@ class Wechat extends Controller{
      */
     const TEMP_URL = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=';
     const MENU_URL = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=';
-    public function send($openid , $username , $phone , $orderid){
+    public function send($openid , $username , $back_num , $money){
 
         $tokens = $this->getAccessToken();
 
         $url = self::TEMP_URL . $tokens;
         $params = [
             'touser' => $openid,
-            'template_id' => 'f4eVhKaktqDxlKRn6YeHPvps8NB5W3yVWwPEURTtams',//模板ID
-            'url' => 'http://www.pengqq.xyz/self', //点击详情后的URL可以动态定义
+            'template_id' => 'ANpsYEDTUmSYCjAt_Zh3dVxCcl22nNU6Kdlb20Y5hyQ',//模板ID
+            'url' => 'http://pengqq.jebt.top/self', //点击详情后的URL可以动态定义
             'data' =>
                 [
                     'first' =>
                         [
-                            'value' => '活动大促销,洗面奶9.9元既得',
+                            'value' => '锁车成功',
                             'color' => '#173177'
                         ],
                     'username' =>
@@ -64,22 +64,12 @@ class Wechat extends Controller{
                             'color' => '#FF0000'
                         ],
 
-                    'phone' =>
-                        [
-                            'value' => $phone,
-                            'color' => '#173177'
-                        ],
-                    'kuaidigs' =>
-                        [
-                            'value' => 'EMS',
-                            'color' => '#173177'
-                        ],
-                    'kuaidinum'  =>[
-                        'value' => $orderid,
+                    'bake'  =>[
+                        'value' => $back_num,
                         'color' => '#173177'
                     ],
-                    'ordernum'  =>  [
-                        'value' => $orderid,
+                    'money'  =>  [
+                        'value' => $money,
                         'color' => '#173177'
                     ],
                     'remark'    =>  [
@@ -117,10 +107,10 @@ class Wechat extends Controller{
     public function send_message(){
         $openid = Input::get('openid');
         $username = Input::get('username');
-        $phone = Input::get('phone');
-        $orderid = Input::get('orderid');
+        $bake_num = Input::get('bake_num');
+        $money = Input::get('money');
 //        $openid = 'owRHY1cti1oJT7ZfEgzXNbTyJPEo';
-        echo $this->send($openid , $username , $phone , $orderid);
+        echo $this->send($openid , $username , $bake_num , $money);
     }
 
     public function create_menu(){
