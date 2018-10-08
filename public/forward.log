@@ -108,3 +108,21 @@ Array
     [payment_no] => 1000018301201809282257204760
     [payment_time] => 2018-09-28 21:16:55
 )
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => 支付失败
+    [mch_appid] => wx3d751ea7a2f7c064
+    [mchid] => 1499304962
+    [result_code] => FAIL
+    [err_code] => NOTENOUGH
+    [err_code_des] => 余额不足
+)
+Array
+(
+    [return_code] => SUCCESS
+    [return_msg] => 参数错误:金额格式有误.
+    [result_code] => FAIL
+    [err_code] => PARAM_ERROR
+    [err_code_des] => 参数错误:金额格式有误.
+)
