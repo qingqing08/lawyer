@@ -96,7 +96,7 @@ class Hotspot extends Controller{
         //接收当前热点id
         $h_id = input::post('h_id');
         //评论内容
-        $content = input::post('content');
+        $content = input::post('content2');
         //这条评论的id
         $con_id  = input::post('con_id');
         // 根据评论id  查询用户id 然后查出被评论人的名字
