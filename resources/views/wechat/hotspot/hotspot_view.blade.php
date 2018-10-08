@@ -105,9 +105,9 @@
                 async:false,
                 data:{contont2:contont2,h_id:h_id,con_id:con_id},
                 success:function(result){
-                    if (result.code == 1){
+                    if (result.code == 4){
                         alert('跟帖成功');
-                        window.location.href="hotspot-view?h_id="+h_id;
+                        // window.location.href="hotspot-view?h_id="+h_id;
                     }else{
                         alert('网络繁忙,稍后重试');
                     }
