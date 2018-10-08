@@ -46,7 +46,7 @@
     <div class="layui-form-item">
         <textarea style="width: 330px;height: 40px; min-height: 40px;" placeholder="请输入内容" name="c_content" id="c_content" cols="30" rows="10" class="layui-textarea"></textarea>
         <div class="layui-input-block">
-            <input type="hidden" value="" id="c_id">
+            <!-- <input type="hidden" value="" id="c_id"> -->
             <button onclick="sub()" class="layui-btn layui-btn-lg layui-btn-normal" style="height: 40px; margin-top: 10px;">跟帖</button>
         </div>
     </div>
@@ -86,8 +86,34 @@
         window.scrollTo(0, document.documentElement.clientHeight);
         $("#comment").show();
         $("#c_content").focus();
-        // alert(con_id);return false;
+    }
 
+    function sub(){
+         // var contont2 = $('#c_content').val();
+         // var h_id = $('input[name=h_id]').val();
+         // var con_id = $('input[name=con_id]').val();
+         // alert(content2);
+         // alert(h_id);
+         // alert(con_id);
+         alert ('nihao');
+         // $.ajax({
+         //    url:"hotspot-thread",
+         //        type:"post",
+         //        dataType:"json",
+         //        cache:false,
+         //        async:false,
+         //        data:{content:content,h_id:h_id,con_id:con_id},
+         //        success:function(result){
+         //            console.log(result);
+         //            if (result.code == 1){
+         //                alert('跟帖成功');
+         //                window.location.href="hotspot-view?h_id="+h_id;
+         //            }else{
+         //                alert('网络繁忙,稍后重试');
+         //            }
+         //        }
+                
+         // });
     }
 /*
     $("#ret").on('click',function(){

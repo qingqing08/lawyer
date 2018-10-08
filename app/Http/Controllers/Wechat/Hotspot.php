@@ -76,12 +76,12 @@ class Hotspot extends Controller{
             'content'=>$content,
             'level'=>0
         ]);
+
         if($res){
             return ['font'=>'评论成功','code'=>1]; 
         }else{
             return ['font'=>'网络繁忙','code'=>2]; 
         }
-
     }
 //跟帖
     public function hotspot_thread(){
@@ -105,6 +105,7 @@ class Hotspot extends Controller{
         ->first();
         $u_id=$data->u_id;
         //将评论内容入库 评论人名字
+        //
         $res=DB::table('thr_hotspot')->insert([
             'pin_id'  => $pinid,
             'h_id'    => $h_id,
