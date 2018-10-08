@@ -89,7 +89,9 @@ class Hotspot extends Controller{
         $openid = Session::get('openid');
         if(empty($openid)){
             return ['font'=>'空空空','code'=>4]; 
-        }
+        }else{
+
+
         // echo $openid;exit;
         //当前评论人的名字
         $user = DB::table('user')
@@ -123,6 +125,8 @@ class Hotspot extends Controller{
         }else{
             return ['font'=>'网络繁忙','code'=>2]; 
         }
+     }
     }
+     
 
 }
