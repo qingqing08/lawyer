@@ -42,6 +42,10 @@
             alert('提现金额不能大于余额');
         }
 
+        if(money == 0.00){
+            alert('提现金额不能小于0.00');
+        }
+
         if(mode == 1){
             window.location.href="/wechat?money=" + money;
         }else if(mode == 2){
