@@ -31,14 +31,14 @@
         <hr class="hr15">
         <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
         <hr class="hr15">
-        <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+        <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="button">
         <hr class="hr20" >
     </form>
 </div>
 
 <script>
     {{--{--2.然后在页面的script标签{{– 这句是废话，但是，啊我的博客好短不想删 – }}中添加--}}
-    $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
+    // $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 
     $(function  () {
         layui.use('form', function(){
@@ -51,10 +51,11 @@
                 // alert(888)
                     var username = $("input[name=username]").val();
                     var password = $("input[name=password]").val();
+                    var _token = $("input[name=_token]").val();
                     $.ajax({
                         url:'/admin/login-do',
                         type:'post',
-                        data:{username:username , password:password},
+                        data:{username:username , password:password , _token:_token},
                         dataType:'json',
                         success:function(data) {
                             if (data.code == 1) {
