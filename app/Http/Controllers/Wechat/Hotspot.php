@@ -91,19 +91,20 @@ class Hotspot extends Controller{
         $user = DB::table('user')
         ->where('wx_openid',$openid)
         ->first();
-        $pinid   = $user->u_id;
-        $pinname = $user->wx_name;
+        print_r($user);exit;
+        // $pinid   = $user->u_id;
+        // $pinname = $user->wx_name;
         //接收当前热点id
-        $h_id = input::post('h_id');
+        $h_id = input::get('h_id');
         //评论内容
-        $content = input::post('contont2');
+        $content = input::get('contont2');
         //这条评论的id
-        $con_id  = input::post('con_id');
+        $con_id  = input::get('con_id');
         // 根据评论id  查询用户id 然后查出被评论人的名字
         $data=DB('con_hotspot')
         ->where('con_id',$con_id)
         ->first();
-        $u_id=$data->u_id;
+        $u_id = $data->u_id;
         //将评论内容入库 评论人名字
         //
         $res=DB::table('thr_hotspot')->insert([

@@ -92,19 +92,19 @@
          var contont2 = $('#c_content').val();
          var h_id = $('input[name=h_id]').val();
          var con_id = $('input[name=con_id]').val();
+
          $.ajaxSetup({
                   headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
               });
-         
+
          $.ajax({
             url:"hotspot-thread",
-                type:"post",
+                type:"get",
                 dataType:"json",
                 cache:false,
                 async:false,
                 data:{contont2:contont2,h_id:h_id,con_id:con_id},
                 success:function(result){
-                    console.log(result);
                     if (result.code == 1){
                         alert('跟帖成功');
                         window.location.href="hotspot-view?h_id="+h_id;
