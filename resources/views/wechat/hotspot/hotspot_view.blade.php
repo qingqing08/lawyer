@@ -92,6 +92,10 @@
          var contont2 = $('#c_content').val();
          var h_id = $('input[name=h_id]').val();
          var con_id = $('input[name=con_id]').val();
+         $.ajaxSetup({
+                  headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+              });
+         
          $.ajax({
             url:"hotspot-thread",
                 type:"post",

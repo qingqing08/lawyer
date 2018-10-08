@@ -92,11 +92,11 @@ class Hotspot extends Controller{
         ->where('wx_openid',$openid)
         ->first();
         $pinid   = $user->u_id;
-        // $pinname = $user->wx_name;
+        $pinname = $user->wx_name;
         //接收当前热点id
         $h_id = input::post('h_id');
         //评论内容
-        $content = input::post('content2');
+        $content = input::post('contont2');
         //这条评论的id
         $con_id  = input::post('con_id');
         // 根据评论id  查询用户id 然后查出被评论人的名字
