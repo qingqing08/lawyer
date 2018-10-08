@@ -89,12 +89,12 @@
     }
 
     function sub(){
-         // var contont2 = $('#c_content').val();
-         // var h_id = $('input[name=h_id]').val();
-         // var con_id = $('input[name=con_id]').val();
-         // alert(content2);
-         // alert(h_id);
-         // alert(con_id);
+         var contont2 = $('#c_content').val();
+         var h_id = $('input[name=h_id]').val();
+         var con_id = $('input[name=con_id]').val();
+         alert(content2);
+         alert(h_id);
+         alert(con_id);
          alert ('nihao');
          // $.ajax({
          //    url:"hotspot-thread",
