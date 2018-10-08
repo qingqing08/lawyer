@@ -177,4 +177,21 @@ class Question extends Controller{
             return ['code'=>2 , 'msg'=>'跟帖失败'];
         }
     }
+
+    public function refund(){
+        $q_id = Input::get('q_id');
+        $u_id = Input::get('u_id');
+
+        $data = DB::table('comment')->where(['q_id'=>$q_id])->first();
+        if ($data->u_id != $u_id){
+            echo "没有权限撤回该问题";
+        } else {
+            $comment_data = DB::table('comment')->where('q_id' , $q_id)->first();
+            if (!empty($comment_data)){
+                echo "该问题已不能被撤回";
+            } else {
+                
+            }
+        }
+    }
 }

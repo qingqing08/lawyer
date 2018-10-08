@@ -122,7 +122,7 @@ class Wechat extends Controller{
                 [
                     'type'  =>  'view',
                     'name'  =>  '实时热点',
-                    'url'   =>  'http://pengqq.jebt.top/hotspot-list',
+                    'url'   =>  'http://peng.jinxiaofei.xyz/hotspot-list',
 //                    'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/hotspot-list?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                 ],
                 [
@@ -132,19 +132,19 @@ class Wechat extends Controller{
                         [
                             'type'  =>  'view',
                             'name'  =>  '找律师',
-                            'url'   =>  'http://pengqq.jebt.top/find-lawyer',
+                            'url'   =>  'http://peng.jinxiaofei.xyz/find-lawyer',
 //                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/find-lawyer?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                         ],
                         [
                             'type'  =>  'view',
                             'name'  =>  '法律常识',
-                            'url'   =>  'http://pengqq.jebt.top/knowledge-list',
+                            'url'   =>  'http://peng.jinxiaofei.xyz/knowledge-list',
 //                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/legal-knowledge?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                         ],
                         [
                             'type'  =>  'view',
                             'name'  =>  '发布悬赏问题',
-                            'url'   =>  'http://pengqq.jebt.top/question-list',
+                            'url'   =>  'http://peng.jinxiaofei.xyz/question-list',
 //                            'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/legal-knowledge?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                         ],
                     ]
@@ -152,7 +152,7 @@ class Wechat extends Controller{
                 [
                     'type'  =>  'view',
                     'name'  =>  '个人中心',
-                    'url'   =>  'http://pengqq.jebt.top/self',
+                    'url'   =>  'http://peng.jinxiaofei.xyz/self',
 //                    'url'   =>  'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx996fa85abda5e676&redirect_uri=http://pengqq.jebt.top/self?response_type=code&scope=snsapi_userinfo&state=STATEA#wechat_redirect',
                 ],
             ],
@@ -312,6 +312,7 @@ class Wechat extends Controller{
 
         if (empty($user_info)){
             DB::table('user')->insert($data);
+//            echo $state;die;
             header("location:".$state);
         }
     }

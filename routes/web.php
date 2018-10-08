@@ -161,6 +161,7 @@ Route::get('pay-do' , 'Wechat\Question@pay_do');
 Route::get('question-view' , 'Wechat\Question@question_view');
 Route::post('comment-do' , 'Wechat\Question@comment_do');
 Route::post('thread-do' , 'Wechat\Question@thread_do');
+Route::get('refund' , 'Wechat\Question@refund');
 
 /*提现*/
 Route::get('/forward' , 'Wechat\User@forward');
