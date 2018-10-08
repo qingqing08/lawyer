@@ -71,7 +71,7 @@ class Question extends Controller{
 
                 //2.生成二维码
                 $qrcode::png($qrurl,"./paycode.png",'H',10,1,false);
-                echo "<img src='http://pengqq.jebt.top/paycode.png'>";
+                echo "<img src='http://peng.jinxiaofei.xyz/paycode.png'>";
             }
         }
 
@@ -182,7 +182,8 @@ class Question extends Controller{
         $q_id = Input::get('q_id');
         $u_id = Input::get('u_id');
 
-        $data = DB::table('comment')->where(['q_id'=>$q_id])->first();
+        $data = DB::table('question')->where(['q_id'=>$q_id])->first();
+//        dd($data);
         if ($data->u_id != $u_id){
             echo "没有权限撤回该问题";
         } else {
@@ -190,7 +191,21 @@ class Question extends Controller{
             if (!empty($comment_data)){
                 echo "该问题已不能被撤回";
             } else {
-                
+//                $order_data = DB::table('order')->where(['q_id'=>$q_id , 'u_id'=>$u_id])->first();
+                if ($data->q_paystatus == 1){
+                    $result = DB::table('question')->where(['q_id'=>$q_id , 'u_id'=>$u_id])->update(['q_paystatus'=>2]);
+                    if ($result){
+                        $user_data = DB::table('user')->where('u_id' , $u_id)->first();
+                        $res = DB::table('user')->where('u_id' , $u_id)->update(['balance'=>$user_data->balance+$data->money]);
+                        if ($res){
+                            echo "撤回成功";
+                        } else {
+                            echo "撤回失败";
+                        }
+                    }
+                } else {
+                    echo "该订单不是支付完成状态";
+                }
             }
         }
     }

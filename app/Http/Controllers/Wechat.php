@@ -320,7 +320,7 @@ class Wechat extends Controller{
     public function notify(){
         $xml = file_get_contents('php://input','r');
         file_put_contents("./notify.log" , $xml."\r\n" , FILE_APPEND);
-
+        
         if($xml == '') $arr = [];
         libxml_disable_entity_loader(true);
         $arr = json_decode(json_encode(simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);

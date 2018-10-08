@@ -17,6 +17,6 @@
 
         var openid = "{{ $openid }}";
 
-        window.location.href="http://pengqq.jebt.top/pay-do?money="+money+"&q_content="+q_content+"&openid="+openid;
+        window.location.href="http://peng.jinxiaofei.xyz/pay-do?money="+money+"&q_content="+q_content+"&openid="+openid;
     }
 </script>
