@@ -87,6 +87,7 @@ class Hotspot extends Controller{
     public function hotspot_thread(){
         //当前用户openid
         $openid = Session::get('openid');
+        echo $openid;exit;
         //当前评论人的名字
         $user = DB::table('user')
         ->where('wx_openid',$openid)
