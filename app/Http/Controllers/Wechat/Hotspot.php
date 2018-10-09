@@ -102,7 +102,7 @@ class Hotspot extends Controller{
         //这条评论的id
         $con_id  = input::get('con_id');
         // 根据评论id  查询用户id 然后查出被评论人的名字
-        $data=DB('con_hotspot')
+        $data=DB::table('con_hotspot')
         ->where('con_id',$con_id)
         ->first();
         $u_id = $data->u_id;
