@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 /* 这几个方法勿动 */
 //生成token
+
 Route::get('get-token' , 'Wechat@get_token');
 
 //发送模板消息
@@ -30,7 +30,6 @@ Route::get('weixin-auth' , 'Wechat@weixin_auth');
 
 //回调地址
 Route::any('notify' , 'Wechat@notify');
-
 /* ---------------------------------------------------------------------- */
 
 //后台首页

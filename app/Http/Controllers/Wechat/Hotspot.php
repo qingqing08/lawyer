@@ -87,17 +87,12 @@ class Hotspot extends Controller{
     public function hotspot_thread(){
         //当前用户openid
         $openid = Session::get('openid');
-        if(empty($openid)){
-            return ['font'=>'空空空','code'=>4]; 
-        }else{
-
-
-        // echo $openid;exit;
         //当前评论人的名字
         $user = DB::table('user')
         ->where('wx_openid',$openid)
         ->first();
-        // print_r($user);exit;
+        print_r($user);exit;
+
         $pinid   = $user->u_id;
         $pinname = $user->wx_name;
         //接收当前热点id
@@ -125,7 +120,6 @@ class Hotspot extends Controller{
         }else{
             return ['font'=>'网络繁忙','code'=>2]; 
         }
-     }
     }
      
 
