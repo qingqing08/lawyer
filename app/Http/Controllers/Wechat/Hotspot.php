@@ -113,6 +113,7 @@ class Hotspot extends Controller{
             'for_id'  => $u_id,
             'content' => $content
         ]);
+            
         if($res){
             return ['font'=>'跟帖成功','code'=>1]; 
         }else{
