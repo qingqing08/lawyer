@@ -86,15 +86,15 @@ class Hotspot extends Controller{
 //跟帖
     public function hotspot_thread(){
         //当前用户openid
-        // $openid = Session::get('openid');
-        // //当前评论人的名字
-        // $user = DB::table('user')
-        // ->where('wx_openid',$openid)
-        // ->first();
+        $openid = Session::get('openid');
+        //当前评论人的名字
+        $user = DB::table('user')
+        ->where('wx_openid',$openid)
+        ->first();
         // print_r($user);exit;
 
-        // $pinid   = $user->u_id;
-        // $pinname = $user->wx_name;
+        $pinid   = $user->u_id;
+        $pinname = $user->wx_name;
         //接收当前热点id
         $h_id = input::get('h_id');
         //评论内容
@@ -107,14 +107,12 @@ class Hotspot extends Controller{
         ->first();
         $u_id = $data->u_id;
         //将评论内容入库 评论人名字
-        //
         $res=DB::table('thr_hotspot')->insert([
-            'pin_id'  => 1,
+            'pin_id'  => $pinid,
             'h_id'    => $h_id,
             'for_id'  => $u_id,
             'content' => $content
         ]);
-
         if($res){
             return ['font'=>'跟帖成功','code'=>1]; 
         }else{
